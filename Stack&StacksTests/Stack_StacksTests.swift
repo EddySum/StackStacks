@@ -19,11 +19,52 @@ class Stack_StacksTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSessionCreates() {
+        let sessionOne = Session.init(
+            type: SessionTypes.Cash,
+            buyIn: 25,
+            startTime: Date.init()
+        )
+        
+        XCTAssertNotNil(sessionOne);
     }
-
+    
+    func testSessionCreateFails() {
+        let invalidbuyIn = Session.init(
+            type: SessionTypes.Cash,
+            buyIn: -1,
+            startTime: Date.init()
+        )
+        
+        XCTAssertNil(invalidbuyIn)
+    }
+    
+    func testRebuyFunc() {
+        let sessionOne = Session.init(
+            type: SessionTypes.Cash,
+            buyIn: 25,
+            startTime: Date.init()
+        )
+        
+        sessionOne?.rebuy(rebuy: 25)
+        XCTAssertEqual(sessionOne?.totalExpense, 50)
+        
+        XCTAssertEqual(sessionOne?.buyIns.count, 2)
+    }
+    
+    func testCashoutFunc() {
+        let sessionOne = Session.init(
+            type: SessionTypes.Cash,
+            buyIn: 25,
+            startTime: Date.init()
+        )
+        
+        sessionOne?.cashout(cashout: 75)
+        XCTAssertEqual(sessionOne?.netProfit, 50)
+    }
+    
+    
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

@@ -15,6 +15,9 @@
 		D48C69AB23FEE80F00B1B0AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48C69A923FEE80F00B1B0AC /* LaunchScreen.storyboard */; };
 		D48C69B623FEE81000B1B0AC /* Stack_StacksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69B523FEE81000B1B0AC /* Stack_StacksTests.swift */; };
 		D48C69C123FEE81000B1B0AC /* Stack_StacksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69C023FEE81000B1B0AC /* Stack_StacksUITests.swift */; };
+		D48C69D023FEF86500B1B0AC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69CF23FEF86500B1B0AC /* Session.swift */; };
+		D48C69D323FEFB5400B1B0AC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69CF23FEF86500B1B0AC /* Session.swift */; };
+		D48C69D423FEFB5500B1B0AC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69CF23FEF86500B1B0AC /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,7 @@
 		D48C69BC23FEE81000B1B0AC /* Stack&StacksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stack&StacksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48C69C023FEE81000B1B0AC /* Stack_StacksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack_StacksUITests.swift; sourceTree = "<group>"; };
 		D48C69C223FEE81000B1B0AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D48C69CF23FEF86500B1B0AC /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		D48C699D23FEE80E00B1B0AC /* Stack&Stacks */ = {
 			isa = PBXGroup;
 			children = (
+				D48C69CE23FEE83800B1B0AC /* models */,
 				D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */,
 				D48C69A023FEE80E00B1B0AC /* SceneDelegate.swift */,
 				D48C69A223FEE80E00B1B0AC /* ContentView.swift */,
@@ -134,6 +139,14 @@
 				D48C69C223FEE81000B1B0AC /* Info.plist */,
 			);
 			path = "Stack&StacksUITests";
+			sourceTree = "<group>";
+		};
+		D48C69CE23FEE83800B1B0AC /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D48C69CF23FEF86500B1B0AC /* Session.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D48C69D023FEF86500B1B0AC /* Session.swift in Sources */,
 				D48C699F23FEE80E00B1B0AC /* AppDelegate.swift in Sources */,
 				D48C69A123FEE80E00B1B0AC /* SceneDelegate.swift in Sources */,
 				D48C69A323FEE80E00B1B0AC /* ContentView.swift in Sources */,
@@ -277,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D48C69D423FEFB5500B1B0AC /* Session.swift in Sources */,
 				D48C69B623FEE81000B1B0AC /* Stack_StacksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D48C69D323FEFB5400B1B0AC /* Session.swift in Sources */,
 				D48C69C123FEE81000B1B0AC /* Stack_StacksUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
