@@ -10,6 +10,8 @@
 		0B5A1C7917E97BB890213E23 /* Pods_Stack_StacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF18922240AD62419071CC2 /* Pods_Stack_StacksTests.framework */; };
 		401AEA5FB8D12E938F12C5C4 /* Pods_Stack_StacksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1788E5A2CE26E2D447042B8F /* Pods_Stack_StacksUITests.framework */; };
 		4874D8B1DDADB137B512D80C /* Pods_Stack_Stacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE248F77F69AA1E68DBFA6E /* Pods_Stack_Stacks.framework */; };
+		D43AC59C2411788A0090A22A /* SessionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43AC59B2411788A0090A22A /* SessionItem.swift */; };
+		D47F0D3F24118F7B00DE4783 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F0D3E24118F7B00DE4783 /* Sessions.swift */; };
 		D48C699F23FEE80E00B1B0AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */; };
 		D48C69A123FEE80E00B1B0AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69A023FEE80E00B1B0AC /* SceneDelegate.swift */; };
 		D48C69A323FEE80E00B1B0AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69A223FEE80E00B1B0AC /* ContentView.swift */; };
@@ -51,6 +53,8 @@
 		571F76196F0B83FF790DD96C /* Pods-Stack&StacksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&StacksUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&StacksUITests/Pods-Stack&StacksUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FDB63057382F20429A3CAB0 /* Pods-Stack&StacksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&StacksUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&StacksUITests/Pods-Stack&StacksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9B2C90AD1B61805BAC8D1CD /* Pods-Stack&Stacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&Stacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks.debug.xcconfig"; sourceTree = "<group>"; };
+		D43AC59B2411788A0090A22A /* SessionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionItem.swift; sourceTree = "<group>"; };
+		D47F0D3E24118F7B00DE4783 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		D48C699B23FEE80E00B1B0AC /* Stack&Stacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stack&Stacks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D48C69A023FEE80E00B1B0AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */,
 				D48C69A023FEE80E00B1B0AC /* SceneDelegate.swift */,
 				D48C69A223FEE80E00B1B0AC /* ContentView.swift */,
+				D47F0D3E24118F7B00DE4783 /* Sessions.swift */,
+				D43AC59B2411788A0090A22A /* SessionItem.swift */,
 				D48C69A423FEE80F00B1B0AC /* Assets.xcassets */,
 				D48C69A923FEE80F00B1B0AC /* LaunchScreen.storyboard */,
 				D48C69AC23FEE80F00B1B0AC /* Info.plist */,
@@ -409,6 +415,8 @@
 			files = (
 				D48C69D023FEF86500B1B0AC /* Session.swift in Sources */,
 				D48C699F23FEE80E00B1B0AC /* AppDelegate.swift in Sources */,
+				D47F0D3F24118F7B00DE4783 /* Sessions.swift in Sources */,
+				D43AC59C2411788A0090A22A /* SessionItem.swift in Sources */,
 				D48C69A123FEE80E00B1B0AC /* SceneDelegate.swift in Sources */,
 				D48C69A323FEE80E00B1B0AC /* ContentView.swift in Sources */,
 			);
