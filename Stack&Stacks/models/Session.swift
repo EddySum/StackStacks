@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 enum SessionTypes {
     case Cash
@@ -14,6 +15,8 @@ enum SessionTypes {
 }
 
 class Session {
+    var docRef: DocumentReference? = nil;
+    
     var type: SessionTypes
     var buyIns: [Double]
     var cashout: Double? = nil
@@ -22,6 +25,7 @@ class Session {
     var startTime: Date
     var endTime: Date? = nil
     
+    // inital buyin
     init?(type: SessionTypes, buyIn: Double, startTime: Date) {
         self.type = type
         
@@ -34,6 +38,30 @@ class Session {
         
         self.totalExpense = buyIn
         self.startTime = startTime
+        
+        
+        //create new session in firebase
+        let sessionCollection = Firestore.firestore().collection("sessions");
+        
+        var typeStr: String;
+        if (type == SessionTypes.Cash) {
+            typeStr = "cash";
+        } else {
+            typeStr = "tournament"
+        }
+        
+        self.docRef = sessionCollection.addDocument(data: [
+            "buyIn": buyIn,
+            "totalExpense": buyIn,
+            "startTime": startTime,
+            "type": typeStr
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(self.docRef!.documentID)")
+            }
+        }
     }
     
     func rebuy(rebuy: Double) {

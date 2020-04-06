@@ -11,7 +11,7 @@ import SwiftUI
 
 let session: Session = Session.init(
     type: SessionTypes.Cash,
-    buyIn: 25,
+    buyIn: 50,
     startTime: Date.init()
 )!
 

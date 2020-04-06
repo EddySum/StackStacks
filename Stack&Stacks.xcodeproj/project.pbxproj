@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,8 @@
 		D48C69D323FEFB5400B1B0AC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69CF23FEF86500B1B0AC /* Session.swift */; };
 		D48C69D423FEFB5500B1B0AC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69CF23FEF86500B1B0AC /* Session.swift */; };
 		D4BF7FAC23FFD8E200C36353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4BF7FAB23FFD8E200C36353 /* GoogleService-Info.plist */; };
+		D4D608BC243AD709000968C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4BF7FAB23FFD8E200C36353 /* GoogleService-Info.plist */; };
+		D4D608BD243AD70A000968C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4BF7FAB23FFD8E200C36353 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,9 +145,7 @@
 				D48C69CE23FEE83800B1B0AC /* models */,
 				D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */,
 				D48C69A023FEE80E00B1B0AC /* SceneDelegate.swift */,
-				D48C69A223FEE80E00B1B0AC /* ContentView.swift */,
-				D47F0D3E24118F7B00DE4783 /* Sessions.swift */,
-				D43AC59B2411788A0090A22A /* SessionItem.swift */,
+				D4D608BE243AE6EB000968C6 /* Views */,
 				D48C69A423FEE80F00B1B0AC /* Assets.xcassets */,
 				D48C69A923FEE80F00B1B0AC /* LaunchScreen.storyboard */,
 				D48C69AC23FEE80F00B1B0AC /* Info.plist */,
@@ -186,6 +186,16 @@
 				D48C69CF23FEF86500B1B0AC /* Session.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		D4D608BE243AE6EB000968C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D48C69A223FEE80E00B1B0AC /* ContentView.swift */,
+				D43AC59B2411788A0090A22A /* SessionItem.swift */,
+				D47F0D3E24118F7B00DE4783 /* Sessions.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FEE79CA65378A5045A880613 /* Frameworks */ = {
@@ -317,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D608BC243AD709000968C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D608BD243AD70A000968C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,21 +383,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		52A2DFDA6811C4853D90ECF2 /* [CP] Check Pods Manifest.lock */ = {
