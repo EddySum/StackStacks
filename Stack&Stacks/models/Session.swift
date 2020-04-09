@@ -14,16 +14,42 @@ enum SessionTypes {
     case Tournament
 }
 
-class Session {
-    var docRef: DocumentReference? = nil;
+class Session: Identifiable, ObservableObject {
+    var id = UUID()
     
-    var type: SessionTypes
-    var buyIns: [Double]
+    var type: SessionTypes? = nil
+    var buyIns: [Double] = []
     var cashout: Double? = nil
     var netProfit: Double? = nil
-    var totalExpense: Double
+    var totalExpense: Double? = nil
     var startTime: Date
     var endTime: Date? = nil
+    
+    init?(data: [String: Any]) {
+        guard
+            let cashout = data["cashout"] as? Double,
+            let type = data["type"] as? String,
+            let totalExpense = data["totalExpense"] as? Double,
+            let buyIns = data["buyIns"] as? [Double],
+            let netProfit = data["netProfit"] as? Double,
+            let startTime = data["startTime"] as? Timestamp,
+            let endTime = data["endTime"] as? Timestamp
+            else {
+                return nil
+                //return nil
+            }
+        
+        
+        self.cashout = cashout
+        self.buyIns = buyIns
+        self.buyIns = [5]
+        self.netProfit = netProfit
+        self.startTime = startTime.dateValue()
+        self.startTime = endTime.dateValue()
+        self.totalExpense = totalExpense
+        self.type = getTypeFromString(typeStr: type)
+        
+    }
     
     // inital buyin
     init?(type: SessionTypes, buyIn: Double, startTime: Date) {
@@ -38,35 +64,11 @@ class Session {
         
         self.totalExpense = buyIn
         self.startTime = startTime
-        
-        
-        //create new session in firebase
-        let sessionCollection = Firestore.firestore().collection("sessions");
-        
-        var typeStr: String;
-        if (type == SessionTypes.Cash) {
-            typeStr = "cash";
-        } else {
-            typeStr = "tournament"
-        }
-        
-        self.docRef = sessionCollection.addDocument(data: [
-            "buyIn": buyIn,
-            "totalExpense": buyIn,
-            "startTime": startTime,
-            "type": typeStr
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(self.docRef!.documentID)")
-            }
-        }
     }
     
     func rebuy(rebuy: Double) {
         buyIns.append(rebuy)
-        totalExpense += rebuy
+        totalExpense! += rebuy
     }
     
     func cashout(cashout: Double) {
@@ -77,7 +79,15 @@ class Session {
     }
     
     private func calcNetProfit() -> Double {
-        return self.cashout! - self.totalExpense
+        return self.cashout! - self.totalExpense!
+    }
+    
+    private func getTypeFromString(typeStr: String) -> SessionTypes {
+        if (typeStr == "cash") {
+            return SessionTypes.Cash
+        } else {
+            return SessionTypes.Tournament
+        }
     }
     
     

@@ -31,7 +31,9 @@ struct Sessions: View {
                 .overlay(
                     VStack {
                     
-                        SessionItem(session: sessions[0])
+                        ForEach(sessions) { session in
+                            SessionItem(session: session)
+                        }
                        
                         
                        Spacer()
