@@ -9,18 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    var sessions: [Session];
+    
     init() {
-        let sessionSeed = Session.init(
+        let session = Session.init(
             type: SessionTypes.Cash,
             buyIn: 25,
             startTime: Date.init()
-        )
+            )!
+        
+        sessions = [session]
     }
     
     var body: some View {
-        
         VStack {
-            Sessions(sessions: [])
+            Sessions(sessions: sessions)
         }
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct Sessions: View {
     var sessions: [Session];
+
+    
     var body: some View {
         
         
@@ -29,7 +31,7 @@ struct Sessions: View {
                 .overlay(
                     VStack {
                     
-                        SessionItem(session: session)
+                        SessionItem(session: sessions[0])
                        
                         
                        Spacer()
@@ -45,6 +47,6 @@ struct Sessions: View {
 
 struct Sessions_Previews: PreviewProvider {
     static var previews: some View {
-        Sessions(sessions: [session, session])
+        Sessions(sessions: [sessionSeed, sessionSeed])
     }
 }
