@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		401AEA5FB8D12E938F12C5C4 /* Pods_Stack_StacksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1788E5A2CE26E2D447042B8F /* Pods_Stack_StacksUITests.framework */; };
 		4874D8B1DDADB137B512D80C /* Pods_Stack_Stacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE248F77F69AA1E68DBFA6E /* Pods_Stack_Stacks.framework */; };
 		D43AC59C2411788A0090A22A /* SessionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43AC59B2411788A0090A22A /* SessionItem.swift */; };
+		D448776B243F8AD800FFFD94 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448776A243F8AD800FFFD94 /* SessionService.swift */; };
+		D448776C243F8AD800FFFD94 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448776A243F8AD800FFFD94 /* SessionService.swift */; };
+		D448776D243F8AD800FFFD94 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448776A243F8AD800FFFD94 /* SessionService.swift */; };
 		D47F0D3F24118F7B00DE4783 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F0D3E24118F7B00DE4783 /* Sessions.swift */; };
 		D48C699F23FEE80E00B1B0AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */; };
 		D48C69A123FEE80E00B1B0AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69A023FEE80E00B1B0AC /* SceneDelegate.swift */; };
@@ -24,6 +27,8 @@
 		D48C69D323FEFB5400B1B0AC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69CF23FEF86500B1B0AC /* Session.swift */; };
 		D48C69D423FEFB5500B1B0AC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C69CF23FEF86500B1B0AC /* Session.swift */; };
 		D4BF7FAC23FFD8E200C36353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4BF7FAB23FFD8E200C36353 /* GoogleService-Info.plist */; };
+		D4D608BC243AD709000968C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4BF7FAB23FFD8E200C36353 /* GoogleService-Info.plist */; };
+		D4D608BD243AD70A000968C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4BF7FAB23FFD8E200C36353 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +59,7 @@
 		9FDB63057382F20429A3CAB0 /* Pods-Stack&StacksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&StacksUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&StacksUITests/Pods-Stack&StacksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9B2C90AD1B61805BAC8D1CD /* Pods-Stack&Stacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&Stacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks.debug.xcconfig"; sourceTree = "<group>"; };
 		D43AC59B2411788A0090A22A /* SessionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionItem.swift; sourceTree = "<group>"; };
+		D448776A243F8AD800FFFD94 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		D47F0D3E24118F7B00DE4783 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		D48C699B23FEE80E00B1B0AC /* Stack&Stacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stack&Stacks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +120,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D4487769243F8AAF00FFFD94 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				D448776A243F8AD800FFFD94 /* SessionService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		D48C699223FEE80E00B1B0AC = {
 			isa = PBXGroup;
 			children = (
@@ -139,13 +153,12 @@
 		D48C699D23FEE80E00B1B0AC /* Stack&Stacks */ = {
 			isa = PBXGroup;
 			children = (
+				D4487769243F8AAF00FFFD94 /* services */,
 				D4BF7FAB23FFD8E200C36353 /* GoogleService-Info.plist */,
 				D48C69CE23FEE83800B1B0AC /* models */,
 				D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */,
 				D48C69A023FEE80E00B1B0AC /* SceneDelegate.swift */,
-				D48C69A223FEE80E00B1B0AC /* ContentView.swift */,
-				D47F0D3E24118F7B00DE4783 /* Sessions.swift */,
-				D43AC59B2411788A0090A22A /* SessionItem.swift */,
+				D4D608BE243AE6EB000968C6 /* Views */,
 				D48C69A423FEE80F00B1B0AC /* Assets.xcassets */,
 				D48C69A923FEE80F00B1B0AC /* LaunchScreen.storyboard */,
 				D48C69AC23FEE80F00B1B0AC /* Info.plist */,
@@ -186,6 +199,16 @@
 				D48C69CF23FEF86500B1B0AC /* Session.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		D4D608BE243AE6EB000968C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D48C69A223FEE80E00B1B0AC /* ContentView.swift */,
+				D43AC59B2411788A0090A22A /* SessionItem.swift */,
+				D47F0D3E24118F7B00DE4783 /* Sessions.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FEE79CA65378A5045A880613 /* Frameworks */ = {
@@ -317,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D608BC243AD709000968C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D608BD243AD70A000968C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,21 +396,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		52A2DFDA6811C4853D90ECF2 /* [CP] Check Pods Manifest.lock */ = {
@@ -416,6 +436,7 @@
 				D48C69D023FEF86500B1B0AC /* Session.swift in Sources */,
 				D48C699F23FEE80E00B1B0AC /* AppDelegate.swift in Sources */,
 				D47F0D3F24118F7B00DE4783 /* Sessions.swift in Sources */,
+				D448776B243F8AD800FFFD94 /* SessionService.swift in Sources */,
 				D43AC59C2411788A0090A22A /* SessionItem.swift in Sources */,
 				D48C69A123FEE80E00B1B0AC /* SceneDelegate.swift in Sources */,
 				D48C69A323FEE80E00B1B0AC /* ContentView.swift in Sources */,
@@ -427,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D48C69D423FEFB5500B1B0AC /* Session.swift in Sources */,
+				D448776C243F8AD800FFFD94 /* SessionService.swift in Sources */,
 				D48C69B623FEE81000B1B0AC /* Stack_StacksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D48C69D323FEFB5400B1B0AC /* Session.swift in Sources */,
+				D448776D243F8AD800FFFD94 /* SessionService.swift in Sources */,
 				D48C69C123FEE81000B1B0AC /* Stack_StacksUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,21 +7,52 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 enum SessionTypes {
     case Cash
     case Tournament
 }
 
-class Session {
-    var type: SessionTypes
-    var buyIns: [Double]
+class Session: Identifiable, ObservableObject {
+    var id = UUID()
+    
+    var type: SessionTypes? = nil
+    var buyIns: [Double] = []
     var cashout: Double? = nil
     var netProfit: Double? = nil
-    var totalExpense: Double
+    var totalExpense: Double? = nil
     var startTime: Date
     var endTime: Date? = nil
     
+    init?(data: [String: Any]) {
+        
+        guard
+            let type = data["type"] as? String,
+            let buyIns = data["buyIns"] as? [Double],
+            let cashout = data["cashout"] as? Double?,
+            let netProfit = data["netProfit"] as? Double?,
+            let totalExpense = data["totalExpense"] as? Double,
+            let startTime = data["startTime"] as? Timestamp,
+            let endTime = data["endTime"] as? Timestamp?
+            else {
+                return nil
+            }
+        
+        
+        self.cashout = cashout
+        self.buyIns = buyIns
+        self.netProfit = netProfit
+        self.startTime = startTime.dateValue()
+        if let endTime = endTime {
+            self.endTime = endTime.dateValue()
+        }
+        self.totalExpense = totalExpense
+        self.type = getTypeFromString(typeStr: type)
+        
+    }
+    
+    // inital buyin
     init?(type: SessionTypes, buyIn: Double, startTime: Date) {
         self.type = type
         
@@ -38,7 +69,7 @@ class Session {
     
     func rebuy(rebuy: Double) {
         buyIns.append(rebuy)
-        totalExpense += rebuy
+        totalExpense! += rebuy
     }
     
     func cashout(cashout: Double) {
@@ -49,7 +80,15 @@ class Session {
     }
     
     private func calcNetProfit() -> Double {
-        return self.cashout! - self.totalExpense
+        return self.cashout! - self.totalExpense!
+    }
+    
+    private func getTypeFromString(typeStr: String) -> SessionTypes {
+        if (typeStr == "cash") {
+            return SessionTypes.Cash
+        } else {
+            return SessionTypes.Tournament
+        }
     }
     
     

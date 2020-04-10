@@ -8,11 +8,17 @@
 
 import SwiftUI
 
-
-
 struct ContentView: View {
+    @ObservedObject private var sessionService: SessionService
+  
+    init() {
+        sessionService = SessionService.init()
+    }
+    
     var body: some View {
-        Text("testing")
+        VStack {
+            Sessions(sessions: sessionService.sessions)
+        }
     }
 }
 

@@ -6,12 +6,7 @@ target 'Stack&Stacks' do
   use_frameworks!
 
   # pods for firebase
-  pod 'Firebase'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Database'
-  pod 'Firebase/Firestore
-  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   
   # Pods for Stack&Stacks
 
