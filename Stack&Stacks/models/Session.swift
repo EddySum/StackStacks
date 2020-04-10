@@ -26,26 +26,27 @@ class Session: Identifiable, ObservableObject {
     var endTime: Date? = nil
     
     init?(data: [String: Any]) {
+        
         guard
-            let cashout = data["cashout"] as? Double,
             let type = data["type"] as? String,
-            let totalExpense = data["totalExpense"] as? Double,
             let buyIns = data["buyIns"] as? [Double],
-            let netProfit = data["netProfit"] as? Double,
+            let cashout = data["cashout"] as? Double?,
+            let netProfit = data["netProfit"] as? Double?,
+            let totalExpense = data["totalExpense"] as? Double,
             let startTime = data["startTime"] as? Timestamp,
-            let endTime = data["endTime"] as? Timestamp
+            let endTime = data["endTime"] as? Timestamp?
             else {
                 return nil
-                //return nil
             }
         
         
         self.cashout = cashout
         self.buyIns = buyIns
-        self.buyIns = [5]
         self.netProfit = netProfit
         self.startTime = startTime.dateValue()
-        self.startTime = endTime.dateValue()
+        if let endTime = endTime {
+            self.endTime = endTime.dateValue()
+        }
         self.totalExpense = totalExpense
         self.type = getTypeFromString(typeStr: type)
         

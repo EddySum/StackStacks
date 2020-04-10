@@ -15,7 +15,8 @@ class SessionService: ObservableObject {
     init() {
         let sessionCollection = Firestore.firestore().collection("sessions");
         
-        sessionCollection.getDocuments() { (querySnapshot, err) in
+        sessionCollection.order(by: "startTime", descending: true).getDocuments()
+         { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
