@@ -21,11 +21,24 @@ struct SessionItem: View {
     let dateStyle: DateFormatter //TODO: move to a pipe helper file
     let session: Session
     
+    let netProfitStr: String
+    let netProfitColor: Color
+    
     init(session: Session) {
         self.session = session
         
         dateStyle = DateFormatter()
         dateStyle.dateStyle = .short
+        
+        if (session.netProfit! < 0) {
+            netProfitStr = "\(session.netProfit!)"
+            netProfitColor = Color(UIColor.systemRed)
+        } else {
+            netProfitStr = "+\(session.netProfit!)"
+            netProfitColor = Color(UIColor.systemGreen)
+        }
+        
+        
     }
     
     var body: some View {
@@ -42,8 +55,9 @@ struct SessionItem: View {
                         }
                         Spacer()
                         
-                        if (session.cashout != nil ){
-                            Text("+\(session.cashout!, specifier: "%.02f")")
+                        if (session.netProfit != nil ){
+                            Text(netProfitStr)
+                            .foregroundColor(netProfitColor)
                         } else {
                             HStack {
                                 Text("Live")
