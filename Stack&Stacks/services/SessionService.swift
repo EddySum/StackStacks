@@ -11,8 +11,13 @@ import FirebaseFirestore
 
 class SessionService: ObservableObject {
     @Published var sessions: [Session] = []
+    let sessionCollection = Firestore.firestore().collection("sessions");
     
     init() {
+        getAllSessions();
+    }
+    
+    func getAllSessions() {
         let sessionCollection = Firestore.firestore().collection("sessions");
         
         sessionCollection.order(by: "startTime", descending: true).getDocuments()
@@ -23,9 +28,26 @@ class SessionService: ObservableObject {
                 for document in querySnapshot!.documents {
                     let session = Session.init(data: document.data())!
                     self.sessions.append(session)
-                    //print("\(document.documentID) => \(document.data())")
                 }
             }
         }
     }
+    
+    func createSession() {
+        var ref: DocumentReference? = nil
+        ref = sessionCollection.addDocument(data: [
+            "buyIns": [5,25],
+            "startTime": Date.init(),
+            "totalExpense": 30,
+            "type": "cash"
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
+    
 }

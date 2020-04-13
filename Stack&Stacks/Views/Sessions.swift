@@ -10,11 +10,8 @@ import SwiftUI
 
 struct Sessions: View {
     var sessions: [Session];
-
     
     var body: some View {
-        
-        
         VStack {
             Rectangle()
                 .fill(Color.green)
@@ -39,16 +36,30 @@ struct Sessions: View {
                        Spacer()
                     }
                 )
-            
-            
             Spacer()
             
+            
+            Button(action: {
+                //.sessionService.createSession()
+            }) {
+                Rectangle()
+                .fill(Color.white)
+                .frame(width: 169, height: 50)
+                .shadow(color: Color(red: 0.93, green: 0.93, blue: 0.84), radius: 5, x: 0, y: 0)
+                .overlay(
+                    Text("New Session")
+                    .foregroundColor(.black)
+                    .fontWeight(.medium)
+                )
+            }
+            
+                
         }
     }
 }
 
 struct Sessions_Previews: PreviewProvider {
     static var previews: some View {
-        Sessions(sessions: [sessionSeed, sessionSeed])
+        Sessions(sessions: [sessionSeed])
     }
 }

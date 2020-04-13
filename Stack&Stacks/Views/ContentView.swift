@@ -10,9 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject private var sessionService: SessionService
-  
+    
     init() {
-        sessionService = SessionService.init()
+        self.sessionService = SessionService.init()
     }
     
     var body: some View {
