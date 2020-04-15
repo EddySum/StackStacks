@@ -38,10 +38,7 @@ struct Sessions: View {
                 )
             Spacer()
             
-            
-            Button(action: {
-                //.sessionService.createSession()
-            }) {
+            NavigationLink(destination: AddSession()) {
                 Rectangle()
                 .fill(Color.white)
                 .frame(width: 169, height: 50)
@@ -52,8 +49,6 @@ struct Sessions: View {
                     .fontWeight(.medium)
                 )
             }
-            
-                
         }
     }
 }

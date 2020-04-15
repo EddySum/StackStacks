@@ -16,8 +16,11 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            Sessions(sessions: sessionService.sessions)
+        NavigationView {
+            VStack {
+                Sessions(sessions: sessionService.sessions)
+            }
+            .navigationBarTitle(Text(""), displayMode: .inline)
         }
     }
 }
