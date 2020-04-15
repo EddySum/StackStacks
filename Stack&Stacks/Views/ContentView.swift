@@ -16,12 +16,33 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Sessions(sessions: sessionService.sessions)
+        TabView {
+            NavigationView {
+                AddSession()
+                .navigationBarTitle(Text("Stats"), displayMode: .inline)
             }
-            .navigationBarTitle(Text(""), displayMode: .inline)
+            .tabItem {
+                Image(systemName: "1.square.fill")
+                Text("Stats")
+            }
+            NavigationView {
+               Sessions(sessions: sessionService.sessions)
+                .navigationBarTitle(Text("Home"), displayMode: .inline)
+            }
+            .tabItem {
+                Image(systemName: "tv.fill")
+                Text("Home")
+            }
+            NavigationView {
+                AddSession()
+                .navigationBarTitle(Text("Profile"), displayMode: .inline)
+            }
+            .tabItem {
+                Image(systemName: "3.square.fill")
+                Text("Profile")
+            }
         }
+        
     }
 }
 

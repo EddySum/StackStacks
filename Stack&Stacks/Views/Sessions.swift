@@ -13,29 +13,30 @@ struct Sessions: View {
     
     var body: some View {
         VStack {
+            
             Rectangle()
                 .fill(Color.green)
                 .frame(height: 125)
                 .overlay(
                     Text("$255.55")
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                    )
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+            )
             Rectangle()
                 .fill(Color.white)
                 .cornerRadius(25)
                 .offset(y: -25)
                 .overlay(
                     VStack {
-                    
+                        
                         ForEach(sessions) { session in
                             SessionItem(session: session)
                         }
-                       
                         
-                       Spacer()
+                        
+                        Spacer()
                     }
-                )
+            )
             Spacer()
             
             NavigationLink(destination: AddSession()) {
