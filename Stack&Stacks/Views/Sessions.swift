@@ -43,11 +43,13 @@ struct Sessions: View {
                 Rectangle()
                 .fill(Color.white)
                 .frame(width: 169, height: 50)
+                .padding(.bottom)
                 .shadow(color: Color(red: 0.93, green: 0.93, blue: 0.84), radius: 5, x: 0, y: 0)
                 .overlay(
                     Text("New Session")
                     .foregroundColor(.black)
                     .fontWeight(.medium)
+                    .padding(.bottom)
                 )
             }
         }
