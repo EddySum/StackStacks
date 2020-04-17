@@ -7,13 +7,14 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct AddSession: View {
     @State var startTime = Date()
     @State var blindsIndex = 0
     @State var gameTypeIdx = 0
     @State private var buyIn = "25.00"
-    
+
     var blinds = ["$0.25/ $0.25", "$0.50/ $1.00"]
     var gameTypes = ["Cash", "Tournament"]
     
@@ -38,25 +39,33 @@ struct AddSession: View {
                 
                 Section (header: Text("Buy In")) {
                     TextField("Buy In", text: Binding(
-                        get: { self.buyIn },
+                        get: { "$\(self.buyIn)" },
                         set: { (userInp) in
-                            if (userInp.prefix(1) != "$") {
-                                self.buyIn = "$\(userInp)"
-                            } else {
-                                self.buyIn = userInp
-                            }
+                            self.buyIn = userInp.filter("0123456789.".contains)
                     }))
                         .keyboardType(.decimalPad)
                 }
                 
                 Section {
-                    Button(action: {}) {
+                    Button(action: {
+                        self.createSession()
+                    }) {
                       Text("Create Session")
                     }
                 }
             }
         }
-        .navigationBarTitle(Text("Add Session"), displayMode: .inline)
+        .navigationBarTitle(Text("New Session"), displayMode: .inline)
+    }
+    
+    func createSession() {
+        if let buyIn = Double(self.buyIn) {
+            let data = ["startTime": startTime, "type": gameTypes[gameTypeIdx], "buyIns": [buyIn], "totalExpense": buyIn] as [String : Any]
+            let sessionCollection = Firestore.firestore().collection("sessions");
+            sessionCollection.addDocument(data: data)
+        }
+    
+        
     }
 }
 
