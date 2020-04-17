@@ -9,18 +9,53 @@
 import SwiftUI
 
 struct AddSession: View {
+    @State var startTime = Date()
+    @State var blindsIndex = 0
+    @State var gameTypeIdx = 0
+    @State private var buyIn = "25.00"
+    
+    var blinds = ["$0.25/ $0.25", "$0.50/ $1.00"]
+    var gameTypes = ["Cash", "Tournament"]
+    
+    
     var body: some View {
         VStack {
-            Divider()
-            AddSessionInput(option: "Game Type", selected: "Cash")
-            AddSessionInput(option: "Start Time", selected: "April 16, 2020")
-            AddSessionInput(option: "Buy In", selected: "25")
-            AddSessionInput(option: "Blinds", selected: "$0.25/$0.50")
-            
-            
-            Spacer()
+            Form {
+                DatePicker("Start Date", selection: $startTime)
+                
+                Picker(selection: $blindsIndex, label: Text("Blinds")) {
+                    ForEach(0 ..< blinds.count) {
+                        Text(self.blinds[$0])
+                    }
+                }
+                
+                Picker(selection: $gameTypeIdx, label: Text("Game Type")) {
+                    ForEach(0 ..< gameTypes.count) {
+                        Text(self.gameTypes[$0])
+                    }
+                }
+                
+                
+                Section (header: Text("Buy In")) {
+                    TextField("Buy In", text: Binding(
+                        get: { self.buyIn },
+                        set: { (userInp) in
+                            if (userInp.prefix(1) != "$") {
+                                self.buyIn = "$\(userInp)"
+                            } else {
+                                self.buyIn = userInp
+                            }
+                    }))
+                        .keyboardType(.decimalPad)
+                }
+                
+                Section {
+                    Button(action: {}) {
+                      Text("Create Session")
+                    }
+                }
+            }
         }
-        .padding(.top, 50)
         .navigationBarTitle(Text("Add Session"), displayMode: .inline)
     }
 }
