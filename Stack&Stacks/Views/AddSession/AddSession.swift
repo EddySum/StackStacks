@@ -10,6 +10,8 @@ import SwiftUI
 import FirebaseFirestore
 
 struct AddSession: View {
+    @ObservedObject var sessionService: SessionService
+    
     @State var startTime = Date()
     @State var blindsIndex = 0
     @State var gameTypeIdx = 0
@@ -61,16 +63,7 @@ struct AddSession: View {
     func createSession() {
         if let buyIn = Double(self.buyIn) {
             let data = ["startTime": startTime, "type": gameTypes[gameTypeIdx], "buyIns": [buyIn], "totalExpense": buyIn] as [String : Any]
-            let sessionCollection = Firestore.firestore().collection("sessions");
-            sessionCollection.addDocument(data: data)
+            self.sessionService.createSession(data: data)
         }
-    
-        
-    }
-}
-
-struct AddSession_Previews: PreviewProvider {
-    static var previews: some View {
-        AddSession()
     }
 }

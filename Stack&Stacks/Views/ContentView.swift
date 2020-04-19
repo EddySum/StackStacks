@@ -9,17 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var sessionService: SessionService
-     @State private var selectedTab = 1
+    @State private var selectedTab = 1
     
     init() {
-        self.sessionService = SessionService.init()
+        
     }
     
     var body: some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                AddSession()
+                Text("Stats")
                 .navigationBarTitle(Text("Stats"), displayMode: .inline)
             }
             .tabItem {
@@ -28,7 +27,7 @@ struct ContentView: View {
             }
             .tag(0)
             NavigationView {
-               Sessions(sessions: sessionService.sessions)
+               Sessions()
                 .navigationBarTitle(Text("Home"), displayMode: .inline)
             }
             .tabItem {
@@ -37,7 +36,7 @@ struct ContentView: View {
             }
             .tag(1)
             NavigationView {
-                AddSession()
+                Text("Profile")
                 .navigationBarTitle(Text("Profile"), displayMode: .inline)
             }
             .tabItem {

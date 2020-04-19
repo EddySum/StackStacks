@@ -26,14 +26,11 @@ class Session: Identifiable, ObservableObject {
     var endTime: Date? = nil
     
     init?(data: [String: Any]) {
-        
         guard
             let type = data["type"] as? String,
             let buyIns = data["buyIns"] as? [Double],
             let cashout = data["cashout"] as? Double?,
             let netProfit = data["netProfit"] as? Double?,
-            let totalExpense = data["totalExpense"] as? Double,
-            let startTime = data["startTime"] as? Timestamp,
             let endTime = data["endTime"] as? Timestamp?
             else {
                 return nil
@@ -43,11 +40,21 @@ class Session: Identifiable, ObservableObject {
         self.cashout = cashout
         self.buyIns = buyIns
         self.netProfit = netProfit
-        self.startTime = startTime.dateValue()
+        
+        // check for Timestamp due to firebase results & then Date for local date creation
+        if let startTime = data["startTime"] as? Timestamp {
+            self.startTime = startTime.dateValue()
+        } else if let startTime = data["startTime"] as? Date {
+            self.startTime = startTime
+        } else {
+            return nil
+        }
+        
         if let endTime = endTime {
             self.endTime = endTime.dateValue()
         }
-        self.totalExpense = totalExpense
+        
+        self.totalExpense = buyIns.reduce(0, +)
         self.type = getTypeFromString(typeStr: type)
         
     }

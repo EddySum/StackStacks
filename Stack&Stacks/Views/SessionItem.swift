@@ -40,7 +40,6 @@ struct SessionItem: View {
                 netProfitColor = Color(UIColor.systemGreen)
             }
         }
-        
     }
     
     var body: some View {

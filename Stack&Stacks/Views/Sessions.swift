@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Sessions: View {
-    var sessions: [Session];
+    @ObservedObject private var sessionService: SessionService = SessionService.init()
     
     var body: some View {
         VStack {
@@ -28,18 +28,15 @@ struct Sessions: View {
                 .offset(y: -25)
                 .overlay(
                     VStack {
-                        
-                        ForEach(sessions) { session in
+                        ForEach(sessionService.sessions) { session in
                             SessionItem(session: session)
                         }
-                        
-                        
                         Spacer()
                     }
             )
             Spacer()
             
-            NavigationLink(destination: AddSession()) {
+            NavigationLink(destination: AddSession(sessionService: self.sessionService)) {
                 Rectangle()
                 .fill(Color.white)
                 .frame(width: 169, height: 50)
@@ -56,8 +53,4 @@ struct Sessions: View {
     }
 }
 
-struct Sessions_Previews: PreviewProvider {
-    static var previews: some View {
-        Sessions(sessions: [sessionSeed])
-    }
-}
+
