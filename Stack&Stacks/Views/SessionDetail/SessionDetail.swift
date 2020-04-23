@@ -9,6 +9,23 @@
 import SwiftUI
 
 struct SessionDetail: View {
+    var netProfit: String = "$0"
+    var buyIn: String = "$0"
+    var peak: String = ""
+    var playerCount = ""
+    
+    init(session: Session) {
+        if let netProfit = session.netProfit {
+            self.netProfit = "$\(netProfit)"
+        }
+        
+        self.buyIn = "$\(session.totalExpense)"
+        self.peak = "$\(session.peak)"
+        self.playerCount = "\(session.playerCount)"
+        
+    }
+    
+    
     
     var body: some View {
         VStack(spacing: 30) {
@@ -25,7 +42,7 @@ struct SessionDetail: View {
                 VStack(spacing: 10) {
                     Text("Net Profit")
                     HStack {
-                        Text("$90.0")
+                        Text(self.netProfit)
                             .bold()
                         Image(systemName: "chevron.up")
                     }
@@ -37,21 +54,21 @@ struct SessionDetail: View {
                 
                 VStack(spacing: 10) {
                     Text("Buy In")
-                    Text("$90.0")
+                    Text(self.buyIn)
                         .bold()
                 }
                 Spacer()
                 
                 VStack(spacing: 10) {
                     Text("Peak")
-                    Text("$90.0")
+                    Text(self.peak)
                         .bold()
                 }
                 Spacer()
                 
                 VStack(spacing: 10) {
                     Text("Players")
-                    Text("5")
+                    Text(self.playerCount)
                         .bold()
                 }
                 Spacer()

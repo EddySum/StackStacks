@@ -9,12 +9,6 @@
 import SwiftUI
 
 
-let sessionSeed: Session = Session.init(
-    type: SessionTypes.Cash,
-    buyIn: 55,
-    startTime: Date.init()
-)!
-
 struct SessionItem: View {
     let screenSize: CGRect = UIScreen.main.bounds
     
@@ -76,8 +70,3 @@ struct SessionItem: View {
     }
 }
 
-struct SessionItem_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionItem(session: sessionSeed)
-    }
-}

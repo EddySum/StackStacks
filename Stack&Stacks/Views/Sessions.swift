@@ -29,7 +29,7 @@ struct Sessions: View {
                 .overlay(
                     VStack {
                         ForEach(sessionService.sessions) { session in
-                            NavigationLink(destination: SessionDetail()) {
+                            NavigationLink(destination: SessionDetail(session: session)) {
                                 SessionItem(session: session)
                             }.foregroundColor(Color.black)
                         }

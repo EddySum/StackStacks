@@ -19,11 +19,13 @@ class Session: Identifiable, ObservableObject {
     
     var type: SessionTypes? = nil
     var buyIns: [Double] = []
+    var playerCount: Int
     var cashout: Double? = nil
     var netProfit: Double? = nil
-    var totalExpense: Double? = nil
+    var totalExpense: Double
     var startTime: Date
     var endTime: Date? = nil
+    var peak: Double
     
     init?(data: [String: Any]) {
         guard
@@ -31,7 +33,8 @@ class Session: Identifiable, ObservableObject {
             let buyIns = data["buyIns"] as? [Double],
             let cashout = data["cashout"] as? Double?,
             let netProfit = data["netProfit"] as? Double?,
-            let endTime = data["endTime"] as? Timestamp?
+            let endTime = data["endTime"] as? Timestamp?,
+            let playerCount = data["playerCount"] as? Int
             else {
                 return nil
             }
@@ -40,6 +43,7 @@ class Session: Identifiable, ObservableObject {
         self.cashout = cashout
         self.buyIns = buyIns
         self.netProfit = netProfit
+        self.playerCount = playerCount
         
         // check for Timestamp due to firebase results & then Date for local date creation
         if let startTime = data["startTime"] as? Timestamp {
@@ -55,28 +59,16 @@ class Session: Identifiable, ObservableObject {
         }
         
         self.totalExpense = buyIns.reduce(0, +)
+        
+        self.peak = self.totalExpense
+        
         self.type = getTypeFromString(typeStr: type)
         
     }
     
-    // inital buyin
-    init?(type: SessionTypes, buyIn: Double, startTime: Date) {
-        self.type = type
-        
-        if (buyIn < 0) {
-            return nil
-        }
-        
-        self.buyIns = []
-        self.buyIns.append(buyIn)
-        
-        self.totalExpense = buyIn
-        self.startTime = startTime
-    }
-    
     func rebuy(rebuy: Double) {
         buyIns.append(rebuy)
-        totalExpense! += rebuy
+        totalExpense += rebuy
     }
     
     func cashout(cashout: Double) {
@@ -87,7 +79,7 @@ class Session: Identifiable, ObservableObject {
     }
     
     private func calcNetProfit() -> Double {
-        return self.cashout! - self.totalExpense!
+        return self.cashout! - self.totalExpense
     }
     
     private func getTypeFromString(typeStr: String) -> SessionTypes {
