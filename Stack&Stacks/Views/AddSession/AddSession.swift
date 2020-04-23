@@ -16,7 +16,7 @@ struct AddSession: View {
     @State var blindsIndex = 0
     @State var gameTypeIdx = 0
     @State private var buyIn = "25.00"
-    @State private var playerCount = "1"
+    @State private var playerCount = 1
 
     var blinds = ["$0.25/ $0.25", "$0.50/ $1.00"]
     var gameTypes = ["Cash", "Tournament"]
@@ -53,7 +53,9 @@ struct AddSession: View {
                     TextField("Number of Players", text: Binding(
                         get: { "\(self.playerCount)" },
                         set: { (userInp) in
-                            self.playerCount = userInp
+                            if let playerCount = Int(userInp) {
+                                self.playerCount = playerCount
+                            }
                     }))
                         .keyboardType(.numberPad)
                 }
@@ -72,7 +74,7 @@ struct AddSession: View {
     
     func createSession() {
         if let buyIn = Double(self.buyIn) {
-            let data = ["startTime": startTime, "type": gameTypes[gameTypeIdx], "buyIns": [buyIn], "totalExpense": buyIn] as [String : Any]
+            let data = ["startTime": startTime, "type": gameTypes[gameTypeIdx], "buyIns": [buyIn], "totalExpense": buyIn, "player": playerCount] as [String : Any]
             self.sessionService.createSession(data: data)
         }
     }
