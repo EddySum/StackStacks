@@ -16,6 +16,7 @@ struct AddSession: View {
     @State var blindsIndex = 0
     @State var gameTypeIdx = 0
     @State private var buyIn = "25.00"
+    @State private var playerCount = "1"
 
     var blinds = ["$0.25/ $0.25", "$0.50/ $1.00"]
     var gameTypes = ["Cash", "Tournament"]
@@ -46,6 +47,15 @@ struct AddSession: View {
                             self.buyIn = userInp.filter("0123456789.".contains)
                     }))
                         .keyboardType(.decimalPad)
+                }
+                
+                Section (header: Text("Number of Players")) {
+                    TextField("Number of Players", text: Binding(
+                        get: { "\(self.playerCount)" },
+                        set: { (userInp) in
+                            self.playerCount = userInp
+                    }))
+                        .keyboardType(.numberPad)
                 }
                 
                 Section {
