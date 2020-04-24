@@ -19,7 +19,7 @@ struct SessionDetail: View {
         VStack(spacing: 30) {
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(".25/.25 NL Hold’Em")
+                    Text("\(session.blinds) NL Hold’Em")
                     Text("My House")
                         .foregroundColor(Color.gray)
                 }.padding(EdgeInsets(top: 25, leading: 25, bottom: 0, trailing: 0))

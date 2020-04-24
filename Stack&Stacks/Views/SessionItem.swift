@@ -44,7 +44,7 @@ struct SessionItem: View {
                 .overlay(
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(".25/ .25 NL Hold'Em")
+                            Text("\(session.blinds) NL Hold'Em")
                             Text("\(dateStyle.string(from: session.startTime))")
                         }
                         Spacer()
