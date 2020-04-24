@@ -79,7 +79,15 @@ class Session: Identifiable, ObservableObject {
         self.endTime = Date.init()
         self.cashout = cashout
         
+        self.updatePeak(stack: cashout)
+        
         self.netProfit = calcNetProfit(stack: cashout)
+    }
+    
+    private func updatePeak(stack: Double) {
+        if (stack > self.peak) {
+            self.peak = stack
+        }
     }
     
     private func calcNetProfit(stack: Double) -> Double {
