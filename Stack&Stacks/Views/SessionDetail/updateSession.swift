@@ -14,6 +14,9 @@ struct updateSession: View {
     
     @State var stack: String = "5.00";
     
+    //TODO:? Turn updateType into enumeration
+    var updateType: String = "Update Stack"
+    
     var body: some View {
         VStack(spacing: 50) {
             HStack {
@@ -37,12 +40,16 @@ struct updateSession: View {
                   .font(.title)
                 }
             
-        }.navigationBarTitle(Text("Update Stack"))
+        }.navigationBarTitle(Text(updateType))
     }
     
     func updateStack() {
         if let stack = Double(stack) {
-            self.session.cashout(cashout: stack)
+            if (updateType == "Update Stack") {
+                self.session.updateStack(stack: stack)
+            } else {
+                self.session.cashout(cashout: stack)
+            }
         }
     }
 }

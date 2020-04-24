@@ -84,13 +84,13 @@ struct SessionDetail: View {
                 NavigationLink(destination: updateSession(session: session, showView: $showUpdateNest), isActive: $showUpdateNest) {
                     VStack(spacing: 10) {
                         Image(systemName: "square.stack.3d.up.fill")
-                        Text("Update")
+                        Text("Update Stack")
                     }
                 }.foregroundColor(.black)
                 
                 Spacer()
                 
-                NavigationLink(destination: updateSession(session: session, showView: $showCashoutNest), isActive: $showCashoutNest) {
+                NavigationLink(destination: updateSession(session: session, showView: $showCashoutNest, updateType: "Cashout"), isActive: $showCashoutNest) {
                     VStack(spacing: 10) {
                         Image(systemName: "flag.fill")
                         Text("Cashout")

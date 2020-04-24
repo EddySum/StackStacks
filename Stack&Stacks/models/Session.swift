@@ -84,6 +84,12 @@ class Session: Identifiable, ObservableObject {
         self.netProfit = calcNetProfit(stack: cashout)
     }
     
+    func updateStack(stack: Double) {
+        self.updatePeak(stack: stack)
+        
+        self.netProfit = calcNetProfit(stack: stack)
+    }
+    
     private func updatePeak(stack: Double) {
         if (stack > self.peak) {
             self.peak = stack
