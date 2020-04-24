@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 struct AddSession: View {
     @ObservedObject var sessionService: SessionService
+    @Binding var showView: Bool
     
     @State var startTime = Date()
     @State var blindsIndex = 0
@@ -63,6 +64,7 @@ struct AddSession: View {
                 Section {
                     Button(action: {
                         self.createSession()
+                        self.showView = false
                     }) {
                       Text("Create Session")
                     }

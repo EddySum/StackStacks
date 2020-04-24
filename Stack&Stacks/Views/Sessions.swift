@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Sessions: View {
     @ObservedObject private var sessionService: SessionService = SessionService.init()
+    @State private var showNested = false
     
     var body: some View {
         VStack {
@@ -38,7 +39,7 @@ struct Sessions: View {
             )
             Spacer()
             
-            NavigationLink(destination: AddSession(sessionService: self.sessionService)) {
+            NavigationLink(destination: AddSession(sessionService: self.sessionService, showView: $showNested), isActive: $showNested) {
                 Rectangle()
                 .fill(Color.white)
                 .frame(width: 169, height: 50)
