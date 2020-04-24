@@ -32,7 +32,12 @@ struct SessionDetail: View {
                     HStack {
                         Text("$\(self.session.netProfit, specifier: "%.2f")")
                             .bold()
-                        Image(systemName: "chevron.up")
+                        if (self.session.netProfit < 0) {
+                            Image(systemName: "chevron.down")
+                        } else {
+                            Image(systemName: "chevron.up")
+                        }
+                        
                     }
                 }
             }
