@@ -26,7 +26,7 @@ class SessionService: ObservableObject {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    let session = Session.init(data: document.data())!
+                    let session = Session.init(data: document.data(), docRef: document.reference)!
                     self.sessions.append(session)
                 }
             }
@@ -39,7 +39,7 @@ class SessionService: ObservableObject {
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                if let session = Session.init(data: data) {
+                if let session = Session.init(data: data, docRef: ref!) {
                     self.sessions.append(session)
                 }
             }

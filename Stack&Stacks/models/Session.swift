@@ -16,6 +16,7 @@ enum SessionTypes {
 
 class Session: Identifiable, ObservableObject {
     var id = UUID()
+    var docRef: DocumentReference
     
     var type: SessionTypes? = nil
     var buyIns: [Double] = []
@@ -27,7 +28,7 @@ class Session: Identifiable, ObservableObject {
     var endTime: Date? = nil
     var peak: Double
     
-    init?(data: [String: Any]) {
+    init?(data: [String: Any], docRef: DocumentReference) {
         guard
             let type = data["type"] as? String,
             let buyIns = data["buyIns"] as? [Double],
@@ -48,7 +49,6 @@ class Session: Identifiable, ObservableObject {
             self.netProfit = netProfit
         }
          
-        
         // check for Timestamp due to firebase results & then Date for local date creation
         if let startTime = data["startTime"] as? Timestamp {
             self.startTime = startTime.dateValue()
@@ -65,8 +65,9 @@ class Session: Identifiable, ObservableObject {
         self.totalExpense = buyIns.reduce(0, +)
         
         self.peak = self.totalExpense
+        self.docRef = docRef
         
-        self.type = getTypeFromString(typeStr: type)
+        self.type = Session.getTypeFromString(typeStr: type)
         
     }
     
@@ -82,12 +83,28 @@ class Session: Identifiable, ObservableObject {
         self.updatePeak(stack: cashout)
         
         self.netProfit = calcNetProfit(stack: cashout)
+        
+        let data = ["cashout": self.cashout as Any, "endTime": self.endTime as Any, "netProfit": self.netProfit, "peak": self.peak] as [String : Any]
+        updateDocument(data: data)
     }
     
     func updateStack(stack: Double) {
         self.updatePeak(stack: stack)
         
         self.netProfit = calcNetProfit(stack: stack)
+        
+        let data = ["netProfit": self.netProfit, "peak": self.peak]
+        updateDocument(data: data)
+    }
+    
+    private func updateDocument(data: [String: Any]) {
+        docRef.updateData(data) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
     }
     
     private func updatePeak(stack: Double) {
@@ -100,7 +117,7 @@ class Session: Identifiable, ObservableObject {
         return stack - self.totalExpense
     }
     
-    private func getTypeFromString(typeStr: String) -> SessionTypes {
+    private static func getTypeFromString(typeStr: String) -> SessionTypes {
         if (typeStr == "cash") {
             return SessionTypes.Cash
         } else {
