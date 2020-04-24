@@ -16,11 +16,13 @@ struct AddSession: View {
     @State var startTime = Date()
     @State var blindsIndex = 0
     @State var gameTypeIdx = 0
+    @State var locationIdx = 0
     @State private var buyIn = "25.00"
     @State private var playerCount = 1
 
     var blinds = ["$0.25/ $0.25", "$0.50/ $1.00"]
     var gameTypes = ["Cash", "Tournament"]
+    var locations = ["My House", "Mohegan Sun Casino", "Foxwoods Casino", "Twin River Casino"]
     
     
     var body: some View {
@@ -40,6 +42,11 @@ struct AddSession: View {
                     }
                 }
                 
+                Picker(selection: $locationIdx, label: Text("Location")) {
+                    ForEach(0 ..< locations.count) {
+                        Text(self.locations[$0])
+                    }
+                }
                 
                 Section (header: Text("Buy In")) {
                     TextField("Buy In", text: Binding(
@@ -76,7 +83,7 @@ struct AddSession: View {
     
     func createSession() {
         if let buyIn = Double(self.buyIn) {
-            let data = ["startTime": startTime, "type": gameTypes[gameTypeIdx], "buyIns": [buyIn], "totalExpense": buyIn, "playerCount": playerCount, "blinds": blinds[blindsIndex]] as [String : Any]
+            let data = ["startTime": startTime, "type": gameTypes[gameTypeIdx], "buyIns": [buyIn], "totalExpense": buyIn, "playerCount": playerCount, "blinds": blinds[blindsIndex], "location": locations[locationIdx]] as [String : Any]
             self.sessionService.createSession(data: data)
         }
     }
