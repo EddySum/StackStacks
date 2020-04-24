@@ -28,6 +28,7 @@ class Session: Identifiable, ObservableObject {
     var endTime: Date? = nil
     var peak: Double
     var blinds: String
+    var location: String
     
     init?(data: [String: Any], docRef: DocumentReference) {
         guard
@@ -37,7 +38,8 @@ class Session: Identifiable, ObservableObject {
             let netProfit = data["netProfit"] as? Double?,
             let endTime = data["endTime"] as? Timestamp?,
             let playerCount = data["playerCount"] as? Int,
-            let blinds = data["blinds"] as? String
+            let blinds = data["blinds"] as? String,
+            let location = data["location"] as? String
             else {
                 return nil
             }
@@ -47,6 +49,7 @@ class Session: Identifiable, ObservableObject {
         self.buyIns = buyIns
         self.playerCount = playerCount
         self.blinds = blinds
+        self.location = location
         
         if let netProfit = netProfit {
             self.netProfit = netProfit
