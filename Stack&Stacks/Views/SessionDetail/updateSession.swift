@@ -9,16 +9,17 @@
 import SwiftUI
 
 struct updateSession: View {
-    let screenSize: CGRect = UIScreen.main.bounds
+    var session: Session;
+    @Binding var showView: Bool
     
-    @State var cashout: String = "5.00";
+    @State var stack: String = "5.00";
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(spacing: 50) {
             HStack {
                 Text("Current Stack: $")
                     .bold()
-                TextField("", text: $cashout)
+                TextField("", text: $stack)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(width: 100)
@@ -27,7 +28,22 @@ struct updateSession: View {
             }
             .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0))
             
+            Button(action: {
+                    self.showView = false
+                    self.updateStack()
+                }) {
+                  Text("Submit")
+                  .foregroundColor(.blue)
+                  .font(.title)
+                }
+            
         }.navigationBarTitle(Text("Update Stack"))
+    }
+    
+    func updateStack() {
+        if let stack = Double(stack) {
+            self.session.cashout(cashout: stack)
+        }
     }
 }
 

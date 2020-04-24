@@ -21,7 +21,7 @@ class Session: Identifiable, ObservableObject {
     var buyIns: [Double] = []
     var playerCount: Int
     var cashout: Double? = nil
-    var netProfit: Double? = nil
+    var netProfit: Double = 0
     var totalExpense: Double
     var startTime: Date
     var endTime: Date? = nil
@@ -42,8 +42,12 @@ class Session: Identifiable, ObservableObject {
         
         self.cashout = cashout
         self.buyIns = buyIns
-        self.netProfit = netProfit
         self.playerCount = playerCount
+        
+        if let netProfit = netProfit {
+            self.netProfit = netProfit
+        }
+         
         
         // check for Timestamp due to firebase results & then Date for local date creation
         if let startTime = data["startTime"] as? Timestamp {
@@ -75,11 +79,11 @@ class Session: Identifiable, ObservableObject {
         self.endTime = Date.init()
         self.cashout = cashout
         
-        self.netProfit = calcNetProfit()
+        self.netProfit = calcNetProfit(stack: cashout)
     }
     
-    private func calcNetProfit() -> Double {
-        return self.cashout! - self.totalExpense
+    private func calcNetProfit(stack: Double) -> Double {
+        return stack - self.totalExpense
     }
     
     private func getTypeFromString(typeStr: String) -> SessionTypes {

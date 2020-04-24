@@ -9,26 +9,11 @@
 import SwiftUI
 
 struct SessionDetail: View {
-    var netProfit: String = "$0"
-    var buyIn: String
-    var peak: String
-    var playerCount: String
-    var cashout: String?
+    @ObservedObject var session: Session;
     
-    init(session: Session) {
-        if let netProfit = session.netProfit {
-            self.netProfit = "$\(netProfit)"
-        }
-        
-        self.buyIn = "$\(session.totalExpense)"
-        self.peak = "$\(session.peak)"
-        self.playerCount = "\(session.playerCount)"
-        
-        if let cashout = session.cashout {
-            self.cashout = "\(cashout)"
-        }
-        
-    }
+    @State private var showCashoutNest = false
+    @State private var showUpdateNest = false
+    
     
     var body: some View {
         VStack(spacing: 30) {
@@ -45,7 +30,7 @@ struct SessionDetail: View {
                 VStack(spacing: 10) {
                     Text("Net Profit")
                     HStack {
-                        Text(self.netProfit)
+                        Text("$\(self.session.netProfit, specifier: "%.2f")")
                             .bold()
                         Image(systemName: "chevron.up")
                     }
@@ -57,15 +42,15 @@ struct SessionDetail: View {
                 
                 VStack(spacing: 10) {
                     Text("Buy In")
-                    Text(self.buyIn)
+                    Text("$\(session.totalExpense, specifier: "%.2f")")
                         .bold()
                 }
                 Spacer()
                 
-                if (cashout != nil) {
+                if (session.cashout != nil) {
                     VStack(spacing: 10) {
                        Text("Cashout")
-                       Text(self.cashout!)
+                       Text("$\(session.cashout!, specifier: "%.2f")")
                            .bold()
                     }
                     Spacer()
@@ -73,14 +58,14 @@ struct SessionDetail: View {
                 
                 VStack(spacing: 10) {
                     Text("Peak")
-                    Text(self.peak)
+                    Text("$\(session.peak, specifier: "%.2f")")
                         .bold()
                 }
                 Spacer()
                 
                 VStack(spacing: 10) {
                     Text("Players")
-                    Text(self.playerCount)
+                    Text("\(session.playerCount)")
                         .bold()
                 }
                 Spacer()
@@ -91,16 +76,16 @@ struct SessionDetail: View {
             HStack {
                 Spacer()
                 
-                NavigationLink(destination: updateSession()) {
+                NavigationLink(destination: updateSession(session: session, showView: $showUpdateNest), isActive: $showUpdateNest) {
                     VStack(spacing: 10) {
-                        Image(systemName: "1.square.fill")
+                        Image(systemName: "square.stack.3d.up.fill")
                         Text("Update")
                     }
                 }.foregroundColor(.black)
                 
                 Spacer()
                 
-                NavigationLink(destination: updateSession()) {
+                NavigationLink(destination: updateSession(session: session, showView: $showCashoutNest), isActive: $showCashoutNest) {
                     VStack(spacing: 10) {
                         Image(systemName: "flag.fill")
                         Text("Cashout")
