@@ -9,46 +9,51 @@
 import SwiftUI
 
 struct Sessions: View {
-    var sessions: [Session];
-
+    @ObservedObject private var sessionService: SessionService = SessionService.init()
+    @State private var showNested = false
     
     var body: some View {
-        
-        
         VStack {
+            
             Rectangle()
                 .fill(Color.green)
                 .frame(height: 125)
                 .overlay(
                     Text("$255.55")
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                    )
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+            )
             Rectangle()
                 .fill(Color.white)
                 .cornerRadius(25)
                 .offset(y: -25)
                 .overlay(
                     VStack {
-                    
-                        ForEach(sessions) { session in
-                            SessionItem(session: session)
+                        ForEach(sessionService.sessions) { session in
+                            NavigationLink(destination: SessionDetail(session: session)) {
+                                SessionItem(session: session)
+                            }.foregroundColor(Color.black)
                         }
-                       
-                        
-                       Spacer()
+                        Spacer()
                     }
-                )
-            
-            
+            )
             Spacer()
             
+            NavigationLink(destination: AddSession(sessionService: self.sessionService, showView: $showNested), isActive: $showNested) {
+                Rectangle()
+                .fill(Color.white)
+                .frame(width: 169, height: 50)
+                .padding(.bottom)
+                .shadow(color: Color(red: 0.93, green: 0.93, blue: 0.84), radius: 5, x: 0, y: 0)
+                .overlay(
+                    Text("New Session")
+                    .foregroundColor(.black)
+                    .fontWeight(.medium)
+                    .padding(.bottom)
+                )
+            }
         }
     }
 }
 
-struct Sessions_Previews: PreviewProvider {
-    static var previews: some View {
-        Sessions(sessions: [sessionSeed, sessionSeed])
-    }
-}
+

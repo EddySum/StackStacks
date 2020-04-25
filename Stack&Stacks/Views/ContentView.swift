@@ -9,16 +9,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var sessionService: SessionService
-  
+    @State private var selectedTab = 1
+    
     init() {
-        sessionService = SessionService.init()
+        
     }
     
     var body: some View {
-        VStack {
-            Sessions(sessions: sessionService.sessions)
+        TabView(selection: $selectedTab) {
+            NavigationView {
+                Text("Stats")
+                .navigationBarTitle(Text("Stats"), displayMode: .inline)
+            }
+            .tabItem {
+                Image(systemName: "1.square.fill")
+                Text("Stats")
+            }
+            .tag(0)
+            NavigationView {
+               Sessions()
+                .navigationBarTitle(Text("Home"), displayMode: .inline)
+            }
+            .tabItem {
+                Image(systemName: "tv.fill")
+                Text("Home")
+            }
+            .tag(1)
+            NavigationView {
+                Text("Profile")
+                .navigationBarTitle(Text("Profile"), displayMode: .inline)
+            }
+            .tabItem {
+                Image(systemName: "3.square.fill")
+                Text("Profile")
+            }
+            .tag(2)
         }
+        
     }
 }
 

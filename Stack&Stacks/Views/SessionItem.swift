@@ -9,20 +9,14 @@
 import SwiftUI
 
 
-let sessionSeed: Session = Session.init(
-    type: SessionTypes.Cash,
-    buyIn: 55,
-    startTime: Date.init()
-)!
-
 struct SessionItem: View {
     let screenSize: CGRect = UIScreen.main.bounds
     
     let dateStyle: DateFormatter //TODO: move to a pipe helper file
     let session: Session
     
-    var netProfitStr: String? = nil
-    var netProfitColor: Color? = nil
+    var netProfitStr: String
+    var netProfitColor: Color
     
     init(session: Session) {
         self.session = session
@@ -31,16 +25,14 @@ struct SessionItem: View {
         dateStyle.dateStyle = .short
         
         
-        if (session.netProfit != nil) {
-            if (session.netProfit! < 0) {
-                netProfitStr = "\(session.netProfit!)"
-                netProfitColor = Color(UIColor.systemRed)
-            } else {
-                netProfitStr = "+\(session.netProfit!)"
-                netProfitColor = Color(UIColor.systemGreen)
-            }
+    
+        if (session.netProfit < 0) {
+            netProfitStr = "\(session.netProfit)"
+            netProfitColor = Color(UIColor.systemRed)
+        } else {
+            netProfitStr = "+\(session.netProfit)"
+            netProfitColor = Color(UIColor.systemGreen)
         }
-        
     }
     
     var body: some View {
@@ -52,13 +44,13 @@ struct SessionItem: View {
                 .overlay(
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(".25/ .25 NL Hold'Em")
+                            Text("\(session.blinds) NL Hold'Em")
                             Text("\(dateStyle.string(from: session.startTime))")
                         }
                         Spacer()
                         
-                        if (netProfitStr != nil){
-                            Text(netProfitStr!)
+                        if (session.cashout != nil){
+                            Text(netProfitStr)
                             .foregroundColor(netProfitColor)
                         } else {
                             HStack {
@@ -77,8 +69,3 @@ struct SessionItem: View {
     }
 }
 
-struct SessionItem_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionItem(session: sessionSeed)
-    }
-}
