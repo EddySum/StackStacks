@@ -40,7 +40,7 @@ class SessionService: ObservableObject {
                 print("Error adding document: \(err)")
             } else {
                 if let session = Session.init(data: data, docRef: ref!) {
-                    self.sessions.append(session)
+                    self.sessions.insert(session, at: 0)
                 }
             }
         }
