@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Sessions: View {
-    @ObservedObject private var sessionService: SessionService = SessionService.init()
+    @EnvironmentObject var sessionService: SessionService 
     @State private var showNested = false
     
     var body: some View {
