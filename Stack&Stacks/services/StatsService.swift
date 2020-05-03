@@ -17,7 +17,7 @@ class StatsService: ObservableObject {
     var avgSessionDuration: TimeInterval = 0.0
     
     init(sessions: [Session]) {
-        self.sessions = sessions
+        self.sessions = sessions.filter { $0.endTime != nil }
         
         if (self.sessions.count > 0) {
             calcStats();
