@@ -6,15 +6,18 @@
 //  Copyright © 2020 Adnan Sumra. All rights reserved.
 //
 
-import Foundation
+import Combine
 import FirebaseFirestore
 
 class SessionService: ObservableObject {
     @Published var sessions: [Session] = []
     let sessionCollection = Firestore.firestore().collection("sessions")
     
+    var cancellables = [AnyCancellable]()
+    
     init() {
         getAllSessions()
+        
     }
     
     func getAllSessions() {
@@ -28,6 +31,7 @@ class SessionService: ObservableObject {
                 for document in querySnapshot!.documents {
                     let session = Session.init(data: document.data(), docRef: document.reference)!
                     self.sessions.append(session)
+                    self.initListenForChange(session: session)
                 }
             }
         }
@@ -41,9 +45,21 @@ class SessionService: ObservableObject {
             } else {
                 if let session = Session.init(data: data, docRef: ref!) {
                     self.sessions.insert(session, at: 0)
+                    self.initListenForChange(session: session)
                 }
             }
         }
+    }
+    
+    /* Temp fix having sessions observable object publish update on indivdual session change */
+    // TODO Optimization: Only listen for changes when session detail view is on screen.
+    private func initListenForChange(session: Session) {
+        let cancel = session.objectWillChange.sink(receiveValue: {
+         self.objectWillChange.send()
+        })
+
+        // Storing Cancellables object to stop deallaction, o/w Listener would be removed
+        self.cancellables.append(cancel)
     }
     
     

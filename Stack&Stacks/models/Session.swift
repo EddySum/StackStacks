@@ -25,7 +25,7 @@ class Session: Identifiable, ObservableObject {
     var netProfit: Double = 0
     var totalExpense: Double
     var startTime: Date
-    var endTime: Date? = nil
+    @Published var endTime: Date? = nil
     var peak: Double
     var blinds: String
     var location: String
@@ -68,9 +68,11 @@ class Session: Identifiable, ObservableObject {
             self.endTime = endTime.dateValue()
         }
         
-        self.totalExpense = buyIns.reduce(0, +)
+        let totalExpense = buyIns.reduce(0, +)
         
-        self.peak = self.totalExpense
+        self.totalExpense = totalExpense
+        self.peak = totalExpense
+        
         self.docRef = docRef
         
         self.type = Session.getTypeFromString(typeStr: type)
