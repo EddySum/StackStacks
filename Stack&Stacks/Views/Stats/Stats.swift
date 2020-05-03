@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 // struct for formatting total time | Move to sepearte file to use in other areas
 struct ElapsedTimeFormat {
@@ -35,61 +36,70 @@ struct Stats: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-             VStack(spacing: 18)  {
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Sessions")
-                        Text("# of Sessions")
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Text("\(statService.sessionCount)")
-                }.padding(.horizontal)
+        ScrollView {
+            VStack(spacing: 32) {
+                VStack {
+                    LineView(data: [8,23,54,32,12,37,7,23,43])
+                        .padding(.horizontal)
+                        .frame(height: 240) //specify height to notify scroll view
+                }
                 
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Net Profit")
-                        Text("Total profit over time")
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Text("$\(statService.netProfit, specifier: "%.2f")")
-                }.padding(.horizontal)
+                Spacer(minLength: 50) // Needed due to strange layout issues with the Lineview
                 
-                
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Total Hours")
-                        Text("Total number of hours played")
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Text("\(self.totalTime.hours)h, \(self.totalTime.minutes)m")
-                }.padding(.horizontal)
-                
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Total Duration")
-                        Text("Average session duration")
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Text("\(self.avgSessionDuration.hours)h \(self.avgSessionDuration.minutes)m")
-                }.padding(.horizontal)
-                
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Profit per hour")
-                        Text("Average profit per hour")
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Text("$\(statService.profitPerHour, specifier: "%.2f")")
-                }.padding(.horizontal)
-            }
-        }.padding(EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0))
+                 VStack(spacing: 18)  {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Sessions")
+                            Text("# of Sessions")
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Text("\(statService.sessionCount)")
+                    }.padding(.horizontal)
+                    
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Net Profit")
+                            Text("Total profit over time")
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Text("$\(statService.netProfit, specifier: "%.2f")")
+                    }.padding(.horizontal)
+                    
+                    
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Total Hours")
+                            Text("Total number of hours played")
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Text("\(self.totalTime.hours)h, \(self.totalTime.minutes)m")
+                    }.padding(.horizontal)
+                    
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Total Duration")
+                            Text("Average session duration")
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Text("\(self.avgSessionDuration.hours)h \(self.avgSessionDuration.minutes)m")
+                    }.padding(.horizontal)
+                    
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Profit per hour")
+                            Text("Average profit per hour")
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Text("$\(statService.profitPerHour, specifier: "%.2f")")
+                    }.padding(.horizontal)
+                }
+      
+            }.padding(.bottom)
+        }
     }
 }
