@@ -43,7 +43,7 @@ class StatsService: ObservableObject {
         
         self.avgSessionDuration = (self.totalTime / Double(self.sessionCount))
         
-        self.profitPerHour = self.netProfit / (self.totalTime / (60 * 2))
+        self.profitPerHour = self.netProfit / (self.totalTime / (60 * 60))
     }
     
 
