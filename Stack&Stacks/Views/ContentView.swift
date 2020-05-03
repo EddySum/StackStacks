@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var sessionService: SessionService
     @State private var selectedTab = 1
     
     init() {
@@ -18,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                Stats()
+                Stats(sessions: sessionService.sessions)
                 .navigationBarTitle(Text("Stats"), displayMode: .inline)
             }
             .tabItem {
