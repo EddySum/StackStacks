@@ -36,6 +36,8 @@ struct Stats: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
              VStack(spacing: 18)  {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
@@ -61,7 +63,7 @@ struct Stats: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Total Hours")
-                        Text("Total number of hours Played")
+                        Text("Total number of hours played")
                             .foregroundColor(.secondary)
                     }
                     Spacer()
@@ -71,7 +73,7 @@ struct Stats: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Total Duration")
-                        Text("Average session Duration")
+                        Text("Average session duration")
                             .foregroundColor(.secondary)
                     }
                     Spacer()
@@ -88,6 +90,6 @@ struct Stats: View {
                     Text("$\(statService.profitPerHour, specifier: "%.2f")")
                 }.padding(.horizontal)
             }
-        }
+        }.padding(EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0))
     }
 }
