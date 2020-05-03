@@ -10,7 +10,14 @@
 		0B5A1C7917E97BB890213E23 /* Pods_Stack_StacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF18922240AD62419071CC2 /* Pods_Stack_StacksTests.framework */; };
 		401AEA5FB8D12E938F12C5C4 /* Pods_Stack_StacksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1788E5A2CE26E2D447042B8F /* Pods_Stack_StacksUITests.framework */; };
 		4874D8B1DDADB137B512D80C /* Pods_Stack_Stacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE248F77F69AA1E68DBFA6E /* Pods_Stack_Stacks.framework */; };
+		D40E8A45245BF9B800E1E267 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A44245BF9B800E1E267 /* Stats.swift */; };
+		D40E8A4A245D531D00E1E267 /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A49245D531D00E1E267 /* StatsService.swift */; };
+		D431F8B82443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
+		D431F8B92443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
+		D431F8BA2443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
 		D43AC59C2411788A0090A22A /* SessionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43AC59B2411788A0090A22A /* SessionItem.swift */; };
+		D43DDD252451406B00FC7325 /* SessionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DDD242451406B00FC7325 /* SessionDetail.swift */; };
+		D43DDD272452586C00FC7325 /* updateSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DDD262452586C00FC7325 /* updateSession.swift */; };
 		D448776B243F8AD800FFFD94 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448776A243F8AD800FFFD94 /* SessionService.swift */; };
 		D448776C243F8AD800FFFD94 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448776A243F8AD800FFFD94 /* SessionService.swift */; };
 		D448776D243F8AD800FFFD94 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D448776A243F8AD800FFFD94 /* SessionService.swift */; };
@@ -58,7 +65,12 @@
 		571F76196F0B83FF790DD96C /* Pods-Stack&StacksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&StacksUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&StacksUITests/Pods-Stack&StacksUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FDB63057382F20429A3CAB0 /* Pods-Stack&StacksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&StacksUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&StacksUITests/Pods-Stack&StacksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9B2C90AD1B61805BAC8D1CD /* Pods-Stack&Stacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&Stacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks.debug.xcconfig"; sourceTree = "<group>"; };
+		D40E8A44245BF9B800E1E267 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		D40E8A49245D531D00E1E267 /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
+		D431F8B72443EC79000334FC /* AddSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSession.swift; sourceTree = "<group>"; };
 		D43AC59B2411788A0090A22A /* SessionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionItem.swift; sourceTree = "<group>"; };
+		D43DDD242451406B00FC7325 /* SessionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetail.swift; sourceTree = "<group>"; };
+		D43DDD262452586C00FC7325 /* updateSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateSession.swift; sourceTree = "<group>"; };
 		D448776A243F8AD800FFFD94 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		D47F0D3E24118F7B00DE4783 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		D48C699B23FEE80E00B1B0AC /* Stack&Stacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stack&Stacks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,10 +132,36 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D40E8A43245BF99800E1E267 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				D40E8A44245BF9B800E1E267 /* Stats.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		D4337BFF2449079B00C8A914 /* AddSession */ = {
+			isa = PBXGroup;
+			children = (
+				D431F8B72443EC79000334FC /* AddSession.swift */,
+			);
+			path = AddSession;
+			sourceTree = "<group>";
+		};
+		D43DDD2324513FC200FC7325 /* SessionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D43DDD242451406B00FC7325 /* SessionDetail.swift */,
+				D43DDD262452586C00FC7325 /* updateSession.swift */,
+			);
+			path = SessionDetail;
+			sourceTree = "<group>";
+		};
 		D4487769243F8AAF00FFFD94 /* services */ = {
 			isa = PBXGroup;
 			children = (
 				D448776A243F8AD800FFFD94 /* SessionService.swift */,
+				D40E8A49245D531D00E1E267 /* StatsService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -153,8 +191,8 @@
 		D48C699D23FEE80E00B1B0AC /* Stack&Stacks */ = {
 			isa = PBXGroup;
 			children = (
-				D4487769243F8AAF00FFFD94 /* services */,
 				D4BF7FAB23FFD8E200C36353 /* GoogleService-Info.plist */,
+				D4487769243F8AAF00FFFD94 /* services */,
 				D48C69CE23FEE83800B1B0AC /* models */,
 				D48C699E23FEE80E00B1B0AC /* AppDelegate.swift */,
 				D48C69A023FEE80E00B1B0AC /* SceneDelegate.swift */,
@@ -204,6 +242,9 @@
 		D4D608BE243AE6EB000968C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D40E8A43245BF99800E1E267 /* Stats */,
+				D43DDD2324513FC200FC7325 /* SessionDetail */,
+				D4337BFF2449079B00C8A914 /* AddSession */,
 				D48C69A223FEE80E00B1B0AC /* ContentView.swift */,
 				D43AC59B2411788A0090A22A /* SessionItem.swift */,
 				D47F0D3E24118F7B00DE4783 /* Sessions.swift */,
@@ -239,6 +280,8 @@
 			dependencies = (
 			);
 			name = "Stack&Stacks";
+			packageProductDependencies = (
+			);
 			productName = "Stack&Stacks";
 			productReference = D48C699B23FEE80E00B1B0AC /* Stack&Stacks.app */;
 			productType = "com.apple.product-type.application";
@@ -313,6 +356,8 @@
 				Base,
 			);
 			mainGroup = D48C699223FEE80E00B1B0AC;
+			packageReferences = (
+			);
 			productRefGroup = D48C699C23FEE80E00B1B0AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,9 +478,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D43DDD252451406B00FC7325 /* SessionDetail.swift in Sources */,
+				D40E8A4A245D531D00E1E267 /* StatsService.swift in Sources */,
+				D40E8A45245BF9B800E1E267 /* Stats.swift in Sources */,
+				D431F8B82443EC79000334FC /* AddSession.swift in Sources */,
 				D48C69D023FEF86500B1B0AC /* Session.swift in Sources */,
 				D48C699F23FEE80E00B1B0AC /* AppDelegate.swift in Sources */,
 				D47F0D3F24118F7B00DE4783 /* Sessions.swift in Sources */,
+				D43DDD272452586C00FC7325 /* updateSession.swift in Sources */,
 				D448776B243F8AD800FFFD94 /* SessionService.swift in Sources */,
 				D43AC59C2411788A0090A22A /* SessionItem.swift in Sources */,
 				D48C69A123FEE80E00B1B0AC /* SceneDelegate.swift in Sources */,
@@ -447,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D431F8B92443EC79000334FC /* AddSession.swift in Sources */,
 				D48C69D423FEFB5500B1B0AC /* Session.swift in Sources */,
 				D448776C243F8AD800FFFD94 /* SessionService.swift in Sources */,
 				D48C69B623FEE81000B1B0AC /* Stack_StacksTests.swift in Sources */,
@@ -457,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D431F8BA2443EC79000334FC /* AddSession.swift in Sources */,
 				D48C69D323FEFB5400B1B0AC /* Session.swift in Sources */,
 				D448776D243F8AD800FFFD94 /* SessionService.swift in Sources */,
 				D48C69C123FEE81000B1B0AC /* Stack_StacksUITests.swift in Sources */,
