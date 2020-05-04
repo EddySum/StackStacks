@@ -15,6 +15,7 @@ class StatsService: ObservableObject {
     var totalTime: TimeInterval = 0.0
     var profitPerHour: TimeInterval = 0.0
     var avgSessionDuration: TimeInterval = 0.0
+    var netProfitHistory: [Double] = []
     
     init(sessions: [Session]) {
         self.sessions = sessions.filter { $0.endTime != nil }
@@ -22,6 +23,7 @@ class StatsService: ObservableObject {
         if (self.sessions.count > 0) {
             calcStats();
         }
+        
     }
     
     private func calcStats() {
@@ -32,7 +34,13 @@ class StatsService: ObservableObject {
             return total + session.netProfit
         })
         
-        
+        // REDUCE: sum netProfits in order & add to return array
+        self.netProfitHistory = self.sessions.reversed().reduce([0.0], { (netProfit:[Double], session:Session) -> [Double] in
+            let newNetProfit = netProfit[netProfit.count-1] + session.netProfit
+            let newArr = netProfit + [newNetProfit]
+            return newArr
+        })
+    
         self.totalTime = self.sessions.reduce(0.0, { (total:Double, session:Session) -> TimeInterval in
             if let endTime = session.endTime {
                 let elapsedSessionTime = endTime.timeIntervalSince(session.startTime)

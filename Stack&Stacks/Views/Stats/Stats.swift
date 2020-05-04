@@ -39,7 +39,7 @@ struct Stats: View {
         ScrollView {
             VStack(spacing: 32) {
                 VStack {
-                    LineView(data: [8,23,54,32,12,37,7,23,43])
+                    LineView(data: statService.netProfitHistory)
                         .padding(.horizontal)
                         .frame(height: 240) //specify height to notify scroll view
                 }
