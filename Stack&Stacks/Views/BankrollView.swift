@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct BankrollView: View {
-    @EnvironmentObject var bankroll: Bankroll
-    
+    @EnvironmentObject var bankrollService: BankrollService
+   
     var body: some View {
         VStack {
-            Text("$\(self.bankroll.bankroll, specifier: "%0.2f")")
+            Text("$\(bankrollService.bankroll.value, specifier: "%0.2f")")
             .foregroundColor(.white)
             .font(.largeTitle)
         }

@@ -13,8 +13,9 @@
 		D40E8A45245BF9B800E1E267 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A44245BF9B800E1E267 /* Stats.swift */; };
 		D40E8A4A245D531D00E1E267 /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A49245D531D00E1E267 /* StatsService.swift */; };
 		D40E8A4D245F6B1C00E1E267 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D40E8A4C245F6B1C00E1E267 /* SwiftUICharts */; };
-		D40E8A4F245F9A7100E1E267 /* Bankroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A4E245F9A7100E1E267 /* Bankroll.swift */; };
+		D40E8A4F245F9A7100E1E267 /* BankrollService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A4E245F9A7100E1E267 /* BankrollService.swift */; };
 		D40E8A51245FA9D000E1E267 /* BankrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A50245FA9D000E1E267 /* BankrollView.swift */; };
+		D40E8A53245FCE7E00E1E267 /* Bankroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A52245FCE7E00E1E267 /* Bankroll.swift */; };
 		D431F8B82443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
 		D431F8B92443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
 		D431F8BA2443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
@@ -70,8 +71,9 @@
 		C9B2C90AD1B61805BAC8D1CD /* Pods-Stack&Stacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stack&Stacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stack&Stacks/Pods-Stack&Stacks.debug.xcconfig"; sourceTree = "<group>"; };
 		D40E8A44245BF9B800E1E267 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		D40E8A49245D531D00E1E267 /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
-		D40E8A4E245F9A7100E1E267 /* Bankroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bankroll.swift; sourceTree = "<group>"; };
+		D40E8A4E245F9A7100E1E267 /* BankrollService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankrollService.swift; sourceTree = "<group>"; };
 		D40E8A50245FA9D000E1E267 /* BankrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankrollView.swift; sourceTree = "<group>"; };
+		D40E8A52245FCE7E00E1E267 /* Bankroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bankroll.swift; sourceTree = "<group>"; };
 		D431F8B72443EC79000334FC /* AddSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSession.swift; sourceTree = "<group>"; };
 		D43AC59B2411788A0090A22A /* SessionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionItem.swift; sourceTree = "<group>"; };
 		D43DDD242451406B00FC7325 /* SessionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetail.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				D448776A243F8AD800FFFD94 /* SessionService.swift */,
 				D40E8A49245D531D00E1E267 /* StatsService.swift */,
+				D40E8A4E245F9A7100E1E267 /* BankrollService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -241,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				D48C69CF23FEF86500B1B0AC /* Session.swift */,
-				D40E8A4E245F9A7100E1E267 /* Bankroll.swift */,
+				D40E8A52245FCE7E00E1E267 /* Bankroll.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -489,7 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D40E8A51245FA9D000E1E267 /* BankrollView.swift in Sources */,
-				D40E8A4F245F9A7100E1E267 /* Bankroll.swift in Sources */,
+				D40E8A4F245F9A7100E1E267 /* BankrollService.swift in Sources */,
 				D43DDD252451406B00FC7325 /* SessionDetail.swift in Sources */,
 				D40E8A4A245D531D00E1E267 /* StatsService.swift in Sources */,
 				D40E8A45245BF9B800E1E267 /* Stats.swift in Sources */,
@@ -501,6 +504,7 @@
 				D448776B243F8AD800FFFD94 /* SessionService.swift in Sources */,
 				D43AC59C2411788A0090A22A /* SessionItem.swift in Sources */,
 				D48C69A123FEE80E00B1B0AC /* SceneDelegate.swift in Sources */,
+				D40E8A53245FCE7E00E1E267 /* Bankroll.swift in Sources */,
 				D48C69A323FEE80E00B1B0AC /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

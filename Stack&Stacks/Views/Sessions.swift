@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct Sessions: View {
-    @EnvironmentObject var sessionService: SessionService 
+    @EnvironmentObject var sessionService: SessionService
+    @EnvironmentObject var bankrollService: BankrollService
     @State private var showNested = false
     
     var body: some View {
