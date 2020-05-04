@@ -19,9 +19,7 @@ struct Sessions: View {
                 .fill(Color.green)
                 .frame(height: 125)
                 .overlay(
-                    Text("$255.55")
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
+                    BankrollView()
             )
             Rectangle()
                 .fill(Color.white)
