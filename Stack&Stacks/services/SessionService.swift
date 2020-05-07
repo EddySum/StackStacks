@@ -10,7 +10,6 @@ import Combine
 import FirebaseFirestore
 
 class SessionService: ObservableObject {
-    var bankrollSvc: BankrollService? = nil
     @Published var sessions: [Session] = []
     let sessionCollection = Firestore.firestore().collection("sessions")
     
@@ -32,10 +31,6 @@ class SessionService: ObservableObject {
                     let session = Session.init(data: document.data(), docRef: document.reference)!
                     self.sessions.append(session)
                     self.initListenForChange(session: session)
-                    
-                    if let bankrollSvc = self.bankrollSvc {
-                        bankrollSvc.updateNetProfit(sessions: self.sessions);
-                    }
                 }
             }
         }
@@ -50,9 +45,6 @@ class SessionService: ObservableObject {
                 if let session = Session.init(data: data, docRef: ref!) {
                     self.sessions.insert(session, at: 0)
                     self.initListenForChange(session: session)
-                    if let bankrollSvc = self.bankrollSvc {
-                        bankrollSvc.updateNetProfit(sessions: self.sessions);
-                    }
                 }
             }
         }
@@ -63,18 +55,10 @@ class SessionService: ObservableObject {
     private func initListenForChange(session: Session) {
         let cancel = session.objectWillChange.sink(receiveValue: {
          self.objectWillChange.send()
-            if let bankrollSvc = self.bankrollSvc {
-                bankrollSvc.updateNetProfit(sessions: self.sessions);
-            }
         })
 
         // Storing Cancellables object to stop deallaction, o/w Listener would be removed
         self.cancellables.append(cancel)
     }
-    
-    func setBankrollService(bankrollSvc: BankrollService) {
-        self.bankrollSvc = bankrollSvc
-    }
-    
     
 }

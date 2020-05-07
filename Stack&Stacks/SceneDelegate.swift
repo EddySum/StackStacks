@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var sessionSvc: SessionService = SessionService()
-    var bankrollSvc: BankrollService = BankrollService()
+    var bankrollSvc: BankrollService?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -24,12 +24,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Create the SwiftUI view that provides the window contents.
         
-        sessionSvc.setBankrollService(bankrollSvc: bankrollSvc)
         
+        let bankrollSvc = BankrollService.init(sessionService: sessionSvc)
         
         let contentView = ContentView()
             .environmentObject(sessionSvc)
             .environmentObject(bankrollSvc)
+        
+        self.bankrollSvc = bankrollSvc
+        
         
         
 

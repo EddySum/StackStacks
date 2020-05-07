@@ -6,16 +6,22 @@
 //  Copyright © 2020 Adnan Sumra. All rights reserved.
 //
 
+import Combine
 import FirebaseFirestore
 
 class BankrollService: ObservableObject {
     let bankrollCollection = Firestore.firestore().collection("bankrolls")
     
+    var cancellables: AnyCancellable? = nil
+
+    
     @Published var bankroll: Bankroll = Bankroll()
     var netProfit: Double = 0.00
     
-    init() {
+    init(sessionService: SessionService) {
         self.getBankroll()
+        
+        setupSessionSvcChangeListener(sessionService: sessionService)
     }
     
     private func getBankroll() {
@@ -37,9 +43,18 @@ class BankrollService: ObservableObject {
             return total + session.netProfit
         })
         
+
         bankroll.calcBankroll(netProfit: self.netProfit)
     }
     
+    private func setupSessionSvcChangeListener(sessionService: SessionService) {
+        cancellables = sessionService.objectWillChange.sink(receiveValue: {
+            DispatchQueue.main.async{
+                self.updateNetProfit(sessions: sessionService.sessions)
+            }
+            
+        })
+    }
 
     
   
