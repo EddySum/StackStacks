@@ -27,11 +27,13 @@ class SessionService: ObservableObject {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                var sessions: [Session] = []
                 for document in querySnapshot!.documents {
                     let session = Session.init(data: document.data(), docRef: document.reference)!
-                    self.sessions.append(session)
+                    sessions.append(session)
                     self.initListenForChange(session: session)
                 }
+                self.sessions = sessions
             }
         }
     }
@@ -51,7 +53,6 @@ class SessionService: ObservableObject {
     }
     
     /* Temp fix having sessions observable object publish update on indivdual session change */
-    // TODO Optimization: Only listen for changes when session detail view is on screen.
     private func initListenForChange(session: Session) {
         let cancel = session.objectWillChange.sink(receiveValue: {
          self.objectWillChange.send()
