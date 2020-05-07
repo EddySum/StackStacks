@@ -15,7 +15,7 @@ enum TransactionType  {
 
 struct AccountView: View {
     @State var transactionType: TransactionType = TransactionType.WITHDRAW
-    
+    @State private var transactionAmt = "0.00"
     
     init() {
         
@@ -26,7 +26,7 @@ struct AccountView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             HStack(spacing: 25) {
                 Button(action: {
                     self.transactionType = TransactionType.DEPOSIT
@@ -44,9 +44,34 @@ struct AccountView: View {
                         .fontWeight(transactionType == TransactionType.WITHDRAW ? .bold : .none)
                 }
             }.padding(.top, 25)
-
+            
+            HStack {
+                TextField("Amount", text: Binding(
+                    get: { "$\(self.transactionAmt)" },
+                    set: { (userInp) in
+                        self.transactionAmt = userInp.filter("0123456789.".contains)
+                }))
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.center)
+            }
+            
+            Button(action: {
+                print("Button action")
+            }) {
+                HStack {
+                    Image(systemName: transactionType == TransactionType.WITHDRAW ? "chevron.up" : "chevron.down")
+                    Text("Transact")
+                }
+            }
+                .foregroundColor(Color.white)
+                .padding()
+                .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.green]), startPoint: .leading, endPoint: .trailing))
+                .cornerRadius(15.0)
+            
             Spacer()
         }
+
+        
         
         
         
