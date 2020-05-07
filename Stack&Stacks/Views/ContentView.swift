@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var sessionService: SessionService
+    @EnvironmentObject var bankrollService: BankrollService
     @State private var selectedTab = 1
     
     init() {
@@ -37,7 +38,7 @@ struct ContentView: View {
             }
             .tag(1)
             NavigationView {
-                AccountView()
+                AccountView(bankroll: bankrollService.bankroll)
                 .navigationBarTitle(Text("Profile"), displayMode: .inline)
             }
             .tabItem {

@@ -14,19 +14,14 @@ enum TransactionType  {
 }
 
 struct AccountView: View {
+    @ObservedObject var bankroll: Bankroll
     @State var transactionType: TransactionType = TransactionType.WITHDRAW
     @State private var transactionAmt = "0.00"
     
-    init() {
-        
-    }
-    
-    func setTransactionType(type: TransactionType) {
-        
-    }
-    
     var body: some View {
         VStack(spacing: 16) {
+            Text("$\(bankroll.value, specifier: "%0.2f")")
+                .font(.largeTitle)
             HStack(spacing: 25) {
                 Button(action: {
                     self.transactionType = TransactionType.DEPOSIT
@@ -69,7 +64,7 @@ struct AccountView: View {
                 .cornerRadius(15.0)
             
             Spacer()
-        }
+        }.padding(.top, 50)
 
         
         
