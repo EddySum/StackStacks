@@ -15,9 +15,8 @@ struct Sessions: View {
     
     var body: some View {
         VStack {
-            
             Rectangle()
-                .fill(Color.green)
+                .fill(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.green]), startPoint: .leading, endPoint: .trailing))
                 .frame(height: 125)
                 .overlay(
                     BankrollView(bankroll: bankrollService.bankroll)
