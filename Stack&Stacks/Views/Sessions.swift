@@ -20,7 +20,7 @@ struct Sessions: View {
                 .fill(Color.green)
                 .frame(height: 125)
                 .overlay(
-                    BankrollView()
+                    BankrollView(bankroll: bankrollService.bankroll)
             )
             Rectangle()
                 .fill(Color.white)

@@ -6,8 +6,10 @@
 //  Copyright © 2020 Adnan Sumra. All rights reserved.
 //
 
-class Bankroll {
-    var value: Double = 0
+import Combine
+
+class Bankroll: ObservableObject {
+    @Published var value: Double = 0
     var transactions: [Double] = []
     
     func setTransactions(data: [String: Any]) {
