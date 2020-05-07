@@ -16,6 +16,7 @@
 		D40E8A4F245F9A7100E1E267 /* BankrollService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A4E245F9A7100E1E267 /* BankrollService.swift */; };
 		D40E8A51245FA9D000E1E267 /* BankrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A50245FA9D000E1E267 /* BankrollView.swift */; };
 		D40E8A53245FCE7E00E1E267 /* Bankroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A52245FCE7E00E1E267 /* Bankroll.swift */; };
+		D40E8A562464ADEF00E1E267 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E8A552464ADEF00E1E267 /* AccountView.swift */; };
 		D431F8B82443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
 		D431F8B92443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
 		D431F8BA2443EC79000334FC /* AddSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431F8B72443EC79000334FC /* AddSession.swift */; };
@@ -74,6 +75,7 @@
 		D40E8A4E245F9A7100E1E267 /* BankrollService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankrollService.swift; sourceTree = "<group>"; };
 		D40E8A50245FA9D000E1E267 /* BankrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankrollView.swift; sourceTree = "<group>"; };
 		D40E8A52245FCE7E00E1E267 /* Bankroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bankroll.swift; sourceTree = "<group>"; };
+		D40E8A552464ADEF00E1E267 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		D431F8B72443EC79000334FC /* AddSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSession.swift; sourceTree = "<group>"; };
 		D43AC59B2411788A0090A22A /* SessionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionItem.swift; sourceTree = "<group>"; };
 		D43DDD242451406B00FC7325 /* SessionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetail.swift; sourceTree = "<group>"; };
@@ -146,6 +148,14 @@
 				D40E8A44245BF9B800E1E267 /* Stats.swift */,
 			);
 			path = Stats;
+			sourceTree = "<group>";
+		};
+		D40E8A542464ADB100E1E267 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				D40E8A552464ADEF00E1E267 /* AccountView.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		D4337BFF2449079B00C8A914 /* AddSession */ = {
@@ -252,6 +262,7 @@
 		D4D608BE243AE6EB000968C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D40E8A542464ADB100E1E267 /* Account */,
 				D40E8A43245BF99800E1E267 /* Stats */,
 				D43DDD2324513FC200FC7325 /* SessionDetail */,
 				D4337BFF2449079B00C8A914 /* AddSession */,
@@ -499,6 +510,7 @@
 				D431F8B82443EC79000334FC /* AddSession.swift in Sources */,
 				D48C69D023FEF86500B1B0AC /* Session.swift in Sources */,
 				D48C699F23FEE80E00B1B0AC /* AppDelegate.swift in Sources */,
+				D40E8A562464ADEF00E1E267 /* AccountView.swift in Sources */,
 				D47F0D3F24118F7B00DE4783 /* Sessions.swift in Sources */,
 				D43DDD272452586C00FC7325 /* updateSession.swift in Sources */,
 				D448776B243F8AD800FFFD94 /* SessionService.swift in Sources */,

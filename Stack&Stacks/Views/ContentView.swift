@@ -37,7 +37,7 @@ struct ContentView: View {
             }
             .tag(1)
             NavigationView {
-                Text("Profile")
+                AccountView()
                 .navigationBarTitle(Text("Profile"), displayMode: .inline)
             }
             .tabItem {
