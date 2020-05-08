@@ -33,7 +33,7 @@ struct ContentView: View {
                 .navigationBarTitle(Text("Home"), displayMode: .inline)
             }
             .tabItem {
-                Image(systemName: "tv.fill")
+                Image(systemName: "house.fill")
                 Text("Home")
             }
             .tag(1)

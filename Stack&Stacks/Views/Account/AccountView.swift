@@ -51,7 +51,10 @@ struct AccountView: View {
             }
             
             Button(action: {
-                print("Button action")
+                if var amt = Double(self.transactionAmt) {
+                    amt = self.transactionType == TransactionType.WITHDRAW ? amt * -1: amt * 1
+                    self.bankroll.addTransaction(transaction: amt)
+                }
             }) {
                 HStack {
                     Image(systemName: transactionType == TransactionType.WITHDRAW ? "chevron.up" : "chevron.down")

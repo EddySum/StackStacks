@@ -39,11 +39,11 @@ struct SessionItem: View {
         VStack {
             Rectangle()
                .fill(Color.white)
-                .frame(width: screenSize.width-20, height: 50)
+                .frame(width: screenSize.width-20, height: 60)
                 .shadow(color: Color(red: 0.93, green: 0.93, blue: 0.84), radius: 5, x: 0, y: 0)
                 .overlay(
                     HStack {
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 8) {
                             Text("\(session.blinds) NL Hold'Em")
                             Text("\(dateStyle.string(from: session.startTime))")
                         }
@@ -62,7 +62,8 @@ struct SessionItem: View {
                         }
                         
                 }
-                        .padding()
+
+                    .padding()
                 )
         }
         
