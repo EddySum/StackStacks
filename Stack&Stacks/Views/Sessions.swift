@@ -9,19 +9,17 @@
 import SwiftUI
 
 struct Sessions: View {
-    @ObservedObject private var sessionService: SessionService = SessionService.init()
+    @EnvironmentObject var sessionService: SessionService
+    @EnvironmentObject var bankrollService: BankrollService
     @State private var showNested = false
     
     var body: some View {
         VStack {
-            
             Rectangle()
-                .fill(Color.green)
+                .fill(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.green]), startPoint: .leading, endPoint: .trailing))
                 .frame(height: 125)
                 .overlay(
-                    Text("$255.55")
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
+                    BankrollView(bankroll: bankrollService.bankroll)
             )
             Rectangle()
                 .fill(Color.white)

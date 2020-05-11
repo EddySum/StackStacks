@@ -84,6 +84,7 @@ struct AddSession: View {
     func createSession() {
         if let buyIn = Double(self.buyIn) {
             let data = ["startTime": startTime, "type": gameTypes[gameTypeIdx], "buyIns": [buyIn], "totalExpense": buyIn, "playerCount": playerCount, "blinds": blinds[blindsIndex], "location": locations[locationIdx]] as [String : Any]
+            
             self.sessionService.createSession(data: data)
         }
     }

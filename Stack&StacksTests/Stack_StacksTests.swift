@@ -18,52 +18,24 @@ class Stack_StacksTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testSessionCreates() {
-        let sessionOne = Session.init(
-            type: SessionTypes.Cash,
-            buyIn: 25,
-            startTime: Date.init()
-        )
+        let sessionSvc = SessionService()
         
-        XCTAssertNotNil(sessionOne);
+        let data = ["buyIns": [25.0], "totalExpense": 25.0, "type": "Cash", "blinds": "$0.25/ $0.25", "playerCount": 1, "location": "My House", "startTime": Date()] as [String : Any]
+        
+        XCTAssertNotNil(sessionSvc.createSession(data: data))
     }
     
-    func testSessionCreateFails() {
-        let invalidbuyIn = Session.init(
-            type: SessionTypes.Cash,
-            buyIn: -1,
-            startTime: Date.init()
-        )
+    func testBankrollCreates() {
+        let bankroll = Bankroll()
         
-        XCTAssertNil(invalidbuyIn)
+        let data = ["transactions": [25.0, 25.0]] as [String : Any]
+        
+        bankroll.setTransactions(data: data)
+        
+        XCTAssertTrue(bankroll.transactions.count > 0)
     }
-    
-    func testRebuyFunc() {
-        let sessionOne = Session.init(
-            type: SessionTypes.Cash,
-            buyIn: 25,
-            startTime: Date.init()
-        )
-        
-        sessionOne?.rebuy(rebuy: 25)
-        XCTAssertEqual(sessionOne?.totalExpense, 50)
-        
-        XCTAssertEqual(sessionOne?.buyIns.count, 2)
-    }
-    
-    func testCashoutFunc() {
-        let sessionOne = Session.init(
-            type: SessionTypes.Cash,
-            buyIn: 25,
-            startTime: Date.init()
-        )
-        
-        sessionOne?.cashout(cashout: 75)
-        XCTAssertEqual(sessionOne?.netProfit, 50)
-    }
-    
-    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
