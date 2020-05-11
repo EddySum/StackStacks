@@ -7,8 +7,10 @@
 //
 
 import Combine
+import FirebaseFirestore
 
 class Bankroll: ObservableObject {
+    var docRef: DocumentReference? = nil
     @Published var value: Double = 0
     var transactions: [Double] = []
     var currentNetProfit: Double = 0
@@ -32,6 +34,23 @@ class Bankroll: ObservableObject {
     func addTransaction(transaction: Double) {
         self.transactions.append(transaction)
         self.calcBankroll(netProfit: self.currentNetProfit)
+        
+        let data = ["transactions": self.transactions as Any, "value": value as Any] as [String : Any]
+        
+        if let docRef = docRef {
+            docRef.updateData(data) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        }
+        
+    }
+    
+    func setDocRef(docRef: DocumentReference) {
+        self.docRef = docRef
     }
       
     

@@ -25,6 +25,7 @@ class BankrollService: ObservableObject {
     }
     
     private func getBankroll() {
+        // TODO: get Authorized bankroll once auth is implemented
         bankrollCollection.getDocuments()
          { (querySnapshot, err) in
             if let err = err {
@@ -33,6 +34,7 @@ class BankrollService: ObservableObject {
                 for document in querySnapshot!.documents {
                      self.bankroll.setTransactions(data: document.data())
                      self.bankroll.calcBankroll(netProfit: self.netProfit)
+                     self.bankroll.setDocRef(docRef: document.reference)
                 }
             }
         }
