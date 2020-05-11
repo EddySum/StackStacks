@@ -27,6 +27,16 @@ class Stack_StacksTests: XCTestCase {
         XCTAssertNotNil(sessionSvc.createSession(data: data))
     }
     
+    func testBankrollCreates() {
+        let bankroll = Bankroll()
+        
+        let data = ["transactions": [25.0, 25.0]] as [String : Any]
+        
+        bankroll.setTransactions(data: data)
+        
+        XCTAssertTrue(bankroll.transactions.count > 0)
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
