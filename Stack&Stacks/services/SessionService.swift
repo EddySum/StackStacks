@@ -38,7 +38,7 @@ class SessionService: ObservableObject {
         }
     }
     
-    func createSession(data: [String: Any]) {
+    func createSession(data: [String: Any]) -> DocumentReference? {
         var ref: DocumentReference? = nil
         ref = sessionCollection.addDocument(data: data) { err in
             if let err = err {
@@ -50,6 +50,8 @@ class SessionService: ObservableObject {
                 }
             }
         }
+        
+        return ref
     }
     
     /* Temp fix having sessions observable object publish update on indivdual session change */
